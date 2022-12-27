@@ -66,7 +66,7 @@ const Statistics = (props: Props) => {
           hard and persevered to build a successful career as a freelancer.`}
         </Text>
       </Box>
-      <Box direction="column" flex={1} gap="2em" className="static-card">
+      <Box direction="column" flex={1} gap="1.5em" className="static-card">
         <Text fontWeight="bold" fontSize={"xlg"} fontType="header" color="#fff">
           With
         </Text>
@@ -75,7 +75,7 @@ const Statistics = (props: Props) => {
           <StaticCard number={40} prefix="PROJECTS" suffix="Completed" />
           <StaticCard number={20} prefix="HAPPY" suffix="Clients" />
         </Box>
-        <Text fontSize={"xlg"} fontType="header" color="#fff">
+        <Text fontSize={"lg"} fontType="header" color="#fff">
           I will bring passion, knowledge, and expertise to every project,you
           can trust that I will go above and beyond to{" "}
           <Text
