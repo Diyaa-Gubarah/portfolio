@@ -28,6 +28,11 @@ const Services = (props: Props) => {
             height="100%"
           />
         </Box>
+
+        {/* Services Card */}
+        <Box flex={1} align="center" justify="center" margin="auto">
+          kj
+        </Box>
       </Box>
     </Box>
   );
