@@ -21,11 +21,7 @@ const Responsive = styled(Box)`
 
 const Home = (props: Props) => {
   return (
-    <Responsive
-      justify="space-between"
-      gap="2em"
-      padding="3em 0"
-    >
+    <Responsive justify="space-between" gap="2em" padding="3em 0">
       <Box
         flex={1}
         direction="column"
@@ -59,12 +55,7 @@ const Home = (props: Props) => {
             React Native & Jr MERN Stack Developer.
           </Text>
         </Box>
-        <Text
-          fontSize={"xlg"}
-          fontType="header"
-          color="#fff"
-          lineHeight="1.2em"
-        >
+        <Text fontSize={"xlg"} fontType="header" color="#fff">
           Don't let your ideas remain just that. Let's work together to{" "}
           <Text
             fontType="header"
