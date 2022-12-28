@@ -36,7 +36,7 @@ const rotate = keyframes`
 
 const AnimatedBorder = styled(Box)`
   & .service-text {
-    border: 2px solid transparent;
+    border: 0.1em solid transparent;
   }
 
   &:hover {
@@ -136,9 +136,10 @@ type ServiceCardProps = {
 const ServiceCard = ({ description, header, icon }: ServiceCardProps) => {
   return (
     <AnimatedBorder
-      flex={1}
       padding="1em"
       rounded="1em"
+      margin="0 auto"
+      flex={1}
       backgroundColor={`url(${images.bg})`}
       direction="column"
       gap="2em"
@@ -149,9 +150,9 @@ const ServiceCard = ({ description, header, icon }: ServiceCardProps) => {
         className="service-text"
         direction="column"
         gap="0.5em"
-        backgroundColor={"#0006"}
+        backgroundColor={"#0007"}
         rounded="0.5em"
-        padding="1em"
+        padding="1em 0.5em"
       >
         <Text fontSize={"xlg"} fontType="header" color="#fff" fontWeight="bold">
           {header}
