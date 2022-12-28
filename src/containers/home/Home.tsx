@@ -4,11 +4,12 @@ import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
 
-const message = `Dear *Diyaa*, I am writing to express my interest in hiring you as a software developer on a freelance basis.\nI have reviewed your portfolio and am impressed by the high quality of your work and the diverse range of projects you have completed.\nI am currently seeking a skilled software developer to work on a project for my company, and I believe that your skills and experience make you the perfect fit for this role. In particular, I was impressed by your experience as JavaScript Developer.
-\tI would be grateful if you could provide me with more information about your availability and rates for this project.
-\nI look forward to the opportunity to work with you and to see what we can accomplish together.
+const message = `I really _like_ your portfolio and think you'd be a great fit for a project I'm working on. Your experience as a *JavaScript Developer* is especially impressive.
+Could you let me know your availability and rates for this project?
 
-\t\nSincerely`;
+Looking forward to working with you and seeing what we can accomplish together.
+
+Sincerely`;
 
 type Props = {};
 
