@@ -1,15 +1,15 @@
 import { IconType } from '../components/icon/Icon';
 
 export default [
-    { id: "1", icon: 'react' as IconType, name: 'React', color: "#64DCFC" },
-    { id: "2", icon: 'node' as IconType, name: 'Node.js', color: "#6BA65C" },
-    { id: "3", icon: 'express' as IconType, name: 'Express.js', color: "#BE8740" },
-    { id: "4", icon: 'mongo' as IconType, name: 'MongoDB', color: "#14AB54" },
-    { id: "5", icon: 'ts' as IconType, name: 'Typescript', color: "#067CD3" },
-    { id: "6", icon: 'js' as IconType, name: 'Javascript', color: "#F3DB4C" },
-    { id: "7", icon: 'html' as IconType, name: 'HTML', color: "#E44A21" },
-    { id: "8", icon: 'css' as IconType, name: 'CSS', color: "#F4045C" },
-    { id: "9", icon: 'postgres' as IconType, name: 'PostgreSQL', color: "#336494" },
-    { id: "10", icon: 'graph' as IconType, name: 'GraphQL', color: "#E40EA4" },
-    { id: "11", icon: 'styled' as IconType, name: 'styled-components', color: "#D791C6" },
+    { id: "1", header: 'Web development', description: "As a JavaScript developer with experience in TypeScript, I can offer web development services to help you build dynamic, interactive websites. This includes custom web applications, API integration, and responsive design." },
+    { id: "2", header: 'Mobile app development', description: "I can also help you build cross-platform mobile apps using React Native. This allows you to create native-like apps that can run on both iOS and Android devices." },
+    { id: "3", header: 'Server-side development', description: "For server-side development projects, I can use Node.js and TypeScript to build scalable, high-performance applications." },
+    { id: "4", header: 'Integration with third-party APIs', description: "I can help you integrate with third-party APIs, such as social media APIs or payment gateways." },
+    { id: "5", header: 'Game development', description: "If you're interested in building browser-based or mobile games, I can use frameworks like Phaser to help you create engaging and interactive games." },
+    { id: "6", header: 'Data visualization', description: "I can use libraries like D3.js to create interactive data visualizations, helping you visualize complex data sets in a way that is easy to understand and interpret." },
+    { id: "7", header: 'Automation', description: "Using tools like Node.js, I can help you automate tasks and processes on the web or on your own computer, streamlining your workflow and saving you time." },
+    { id: "8", header: 'E-commerce development', description: "I can also offer e-commerce development services, including building custom shopping carts, payment gateways, and order management systems." },
+    { id: "9", header: 'Internet of Things (IoT) development', description: "I can build applications that interact with connected devices and sensors as part of the Internet of Things (IoT)." },
+    { id: "10", header: 'Machine learning', description: "Machine learning: Building machine learning models and integrating them into web or mobile applications using libraries like TensorFlow.js." },
+    { id: "10", header: 'Consulting and training', description: "As a TypeScript expert, I can also provide consulting and training services to help you or your team learn more about this powerful language and how to use it effectively." },
 ]

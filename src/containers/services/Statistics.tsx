@@ -49,7 +49,7 @@ const Statistics = (props: Props) => {
         <Text
           color="var(--text-primary-color)"
           fontSize={"md"}
-          fontType="body"
+          fontType="header"
         >
           {`I graduated as a Surveying Engineer then turned Fullstack
           Freelancer, I have a diverse range of skills and experiences that make
@@ -57,7 +57,7 @@ const Statistics = (props: Props) => {
         </Text>
         <Text
           fontSize={"md"}
-          fontType="body"
+          fontType="header"
           color="var(--text-primary-color)"
         >
           {`
@@ -67,7 +67,7 @@ const Statistics = (props: Props) => {
         </Text>
         <Text
           fontSize={"md"}
-          fontType="body"
+          fontType="header"
           color="var(--text-primary-color)"
         >
           {`

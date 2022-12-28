@@ -59,7 +59,6 @@ const Container = styled.div<BoxProps>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   ${(props) => props.position && Position};
 `;
 

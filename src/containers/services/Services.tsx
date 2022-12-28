@@ -1,47 +1,9 @@
-import { Box, Icon, Text } from "../../components";
-import styled, { keyframes } from "styled-components";
+import { Box, Text } from "../../components";
 
-import { IconType } from "../../components/icon/Icon";
+import { OFFERS } from "../../data";
+import OverLay from "./OverLay";
 import React from "react";
 import Statistics from "./Statistics";
-import images from "../../constants/images";
-
-const animateBorder = keyframes`
-  0% {
-    border-top-color: var(--primary-color);
-  }
-  25% {
-    border-right-color: var(--primary-color);
-  }
-  50% {
-    border-bottom-color: var(--primary-color);
-  }
-  75% {
-    border-left-color: var(--primary-color);
-  }
-  100% {
-    border-top-color: var(--primary-color);
-  }
-  
-  
-`;
-
-const AnimatedBorder = styled(Box)`
-  & .service-text {
-    border: 0.1em solid transparent;
-  }
-
-  &:hover {
-    & svg {
-      fill: var(--primary-color);
-    }
-
-    & .service-text {
-      animation: ${animateBorder} 3s linear infinite;
-      -webkit-animation: ${animateBorder} 3s linear infinite;
-    }
-  }
-`;
 
 type Props = {};
 
@@ -74,42 +36,20 @@ const Services = (props: Props) => {
         {/* Services Card */}
         <Box
           flex={1}
-          align="center"
-          justify="center"
+          justify="space-between"
           margin="auto"
-          gap="2em"
+          gap="1em"
           wrap="wrap"
         >
-          <ServiceCard
-            icon="node"
-            header="Server Development"
-            description="Building dynamic, interactive websites, including custom web
-          applications, API integration, and responsive design."
-          />
-          <ServiceCard
-            icon="react"
-            header="Web Development"
-            description="Building dynamic, interactive websites, including custom web
-          applications, API integration, and responsive design."
-          />
-          <ServiceCard
-            icon="react"
-            header="Web Development"
-            description="Building dynamic, interactive websites, including custom web
-          applications, API integration, and responsive design."
-          />
-          <ServiceCard
-            icon="react"
-            header="Web Development"
-            description="Building dynamic, interactive websites, including custom web
-          applications, API integration, and responsive design."
-          />
-          <ServiceCard
-            icon="react"
-            header="Web Development"
-            description="Building dynamic, interactive websites, including custom web
-          applications, API integration, and responsive design."
-          />
+          {React.Children.toArray(
+            OFFERS.map((item) => (
+              <OverLay
+                id={item.id}
+                header={item.header}
+                description={item.description}
+              />
+            ))
+          )}
         </Box>
       </Box>
     </Box>
@@ -117,51 +57,3 @@ const Services = (props: Props) => {
 };
 
 export default Services;
-
-type ServiceCardProps = {
-  icon: IconType;
-  header: string;
-  description: string;
-};
-
-const ServiceCard = ({ description, header, icon }: ServiceCardProps) => {
-  return (
-    <AnimatedBorder
-      padding="1em"
-      rounded="1em"
-      margin="0 auto"
-      flex={1}
-      backgroundColor={`url(${images.bg})`}
-      direction="column"
-      gap="2em"
-      justify="space-between"
-    >
-      <Icon name={icon} size="3em" color="var(--text-primary-color)" />
-      <Box
-        className="service-text"
-        direction="column"
-        gap="0.5em"
-        backgroundColor={"#0007"}
-        rounded="0.5em"
-        padding="1em 0.5em"
-      >
-        <Text
-          fontSize={"lg"}
-          fontType="header"
-          color="var(--text-primary-color)"
-          fontWeight="bold"
-        >
-          {header}
-        </Text>
-        <Text
-          fontSize={"sm"}
-          fontType="header"
-          color="var(--text-primary-color)"
-          textAlign="left"
-        >
-          {description}
-        </Text>
-      </Box>
-    </AnimatedBorder>
-  );
-};
