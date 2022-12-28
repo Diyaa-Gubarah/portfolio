@@ -1,6 +1,7 @@
 import { Box, Text } from "../../components";
 import React, { useEffect, useMemo, useState } from "react";
 
+import images from "../../constants/images";
 import styled from "styled-components";
 
 type Props = {};
@@ -33,14 +34,22 @@ const Static = styled(Box)`
 const Statistics = (props: Props) => {
   return (
     <Static justify="space-between" gap="2em">
-      <Box direction="column" gap="0.75em" className="static-text" flex={1}>
+      <Box
+        direction="column"
+        gap="0.75em"
+        className="static-text"
+        flex={1}
+        backgroundColor={"#0006"}
+        rounded="0.5em"
+        padding="1em"
+      >
         <Text fontWeight="bold" fontSize={"xlg"} fontType="header" color="#fff">
           Who's DIYAA?
         </Text>
         <Text
-          color="var(--text-secondary-color)"
+          color="var(--text-primary-color)"
           fontSize={"md"}
-          fontType="header"
+          fontType="body"
         >
           {`I graduated as a Surveying Engineer then turned Fullstack
           Freelancer, I have a diverse range of skills and experiences that make
@@ -48,8 +57,8 @@ const Statistics = (props: Props) => {
         </Text>
         <Text
           fontSize={"md"}
-          fontType="header"
-          color="var(--text-secondary-color)"
+          fontType="body"
+          color="var(--text-primary-color)"
         >
           {`
           My background in surveying gives me a strong foundation in analysis and management, and my self-taught
@@ -58,8 +67,8 @@ const Statistics = (props: Props) => {
         </Text>
         <Text
           fontSize={"md"}
-          fontType="header"
-          color="var(--text-secondary-color)"
+          fontType="body"
+          color="var(--text-primary-color)"
         >
           {`
           Shifting careers is never easy, but I've worked
@@ -75,18 +84,20 @@ const Statistics = (props: Props) => {
           <StaticCard number={40} prefix="PROJECTS" suffix="Completed" />
           <StaticCard number={20} prefix="HAPPY" suffix="Clients" />
         </Box>
-        <Text fontSize={"lg"} fontType="header" color="#fff">
-          I will bring passion, knowledge, and expertise to every project,you
-          can trust that I will go above and beyond to{" "}
-          <Text
-            fontType="header"
-            fontSize="none"
-            fontWeight="bold"
-            gradient="var(--primary-gradient)"
-          >
-            ENSURE YOUR SUCCESS.
+        <Box backgroundColor={"#0006"} rounded="0.5em" padding="1em">
+          <Text fontSize={"lg"} fontType="header" color="#fff">
+            I will bring passion, knowledge, and expertise to every project,you
+            can trust that I will go above and beyond to{" "}
+            <Text
+              fontType="header"
+              fontSize="none"
+              fontWeight="bold"
+              gradient="var(--primary-gradient)"
+            >
+              ENSURE YOUR SUCCESS.
+            </Text>
           </Text>
-        </Text>
+        </Box>
       </Box>
     </Static>
   );

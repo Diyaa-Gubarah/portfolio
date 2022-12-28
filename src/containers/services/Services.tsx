@@ -1,10 +1,10 @@
-import { Box, Icon, Image, Text } from "../../components";
-import styled, { css, keyframes } from "styled-components";
+import { Box, Icon, Text } from "../../components";
+import styled, { keyframes } from "styled-components";
 
+import { IconType } from "../../components/icon/Icon";
 import React from "react";
 import Statistics from "./Statistics";
 import images from "../../constants/images";
-import { motion } from "framer-motion";
 
 const animateBorder = keyframes`
   0% {
@@ -24,18 +24,7 @@ const animateBorder = keyframes`
   }
   
 `;
-const animateBackground = keyframes`
-   0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  
-`;
+
 const rotate = keyframes`
   0% {
     rotate:0deg;
@@ -43,26 +32,22 @@ const rotate = keyframes`
   100% {
     rotate:360deg;
   }
-  
-  
 `;
 
 const AnimatedBorder = styled(Box)`
-  border: 2px solid transparent;
-  &:hover {
-    animation: ${animateBorder} 3s linear infinite;
+  & .service-text {
+    border: 2px solid transparent;
+  }
 
+  &:hover {
     & svg {
       animation: ${rotate} 3s linear infinite;
       fill: var(--primary-color);
     }
 
-    & .service-text span {
-      background: var(--primary-gradient);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: ${animateBackground} 1s linear infinite;
+    & .service-text {
+      animation: ${animateBorder} 3s linear infinite;
+      -webkit-animation: ${animateBorder} 3s linear infinite;
     }
   }
 `;
@@ -94,16 +79,6 @@ const Services = (props: Props) => {
             you.
           </Text>
         </Box>
-        <Box flex={1} align="center" justify="center" margin="auto">
-          <Image
-            src={images.services}
-            alt="my personal image"
-            objectFit="cover"
-            blind="lighten"
-            width="100%"
-            height="100%"
-          />
-        </Box>
 
         {/* Services Card */}
         <Box
@@ -114,9 +89,36 @@ const Services = (props: Props) => {
           gap="2em"
           wrap="wrap"
         >
-          <ServiceCard />
-          <ServiceCard />
-          <ServiceCard />
+          <ServiceCard
+            icon="react"
+            header="Web Development"
+            description="Building dynamic, interactive websites, including custom web
+          applications, API integration, and responsive design."
+          />
+          <ServiceCard
+            icon="react"
+            header="Web Development"
+            description="Building dynamic, interactive websites, including custom web
+          applications, API integration, and responsive design."
+          />
+          <ServiceCard
+            icon="react"
+            header="Web Development"
+            description="Building dynamic, interactive websites, including custom web
+          applications, API integration, and responsive design."
+          />
+          <ServiceCard
+            icon="react"
+            header="Web Development"
+            description="Building dynamic, interactive websites, including custom web
+          applications, API integration, and responsive design."
+          />
+          <ServiceCard
+            icon="react"
+            header="Web Development"
+            description="Building dynamic, interactive websites, including custom web
+          applications, API integration, and responsive design."
+          />
         </Box>
       </Box>
     </Box>
@@ -125,28 +127,37 @@ const Services = (props: Props) => {
 
 export default Services;
 
-type ServiceCardProps = {};
+type ServiceCardProps = {
+  icon: IconType;
+  header: string;
+  description: string;
+};
 
-const ServiceCard = (props: ServiceCardProps) => {
+const ServiceCard = ({ description, header, icon }: ServiceCardProps) => {
   return (
     <AnimatedBorder
       flex={1}
       padding="1em"
       rounded="1em"
-      backgroundColor="#0003"
+      backgroundColor={`url(${images.bg})`}
       direction="column"
       gap="2em"
       justify="space-between"
-      position={{ position: "relative" }}
     >
-      <Icon name="react" size="3em" color="#fff" />
-      <Box direction="column" gap="0.5em" className="service-text">
+      <Icon name={icon} size="3em" color="#fff" />
+      <Box
+        className="service-text"
+        direction="column"
+        gap="0.5em"
+        backgroundColor={"#0006"}
+        rounded="0.5em"
+        padding="1em"
+      >
         <Text fontSize={"xlg"} fontType="header" color="#fff" fontWeight="bold">
-          Web Development
+          {header}
         </Text>
         <Text fontSize={"sm"} fontType="header" color="#fff">
-          Building dynamic, interactive websites, including custom web
-          applications, API integration, and responsive design.
+          {description}
         </Text>
       </Box>
     </AnimatedBorder>
