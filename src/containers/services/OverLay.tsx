@@ -1,16 +1,17 @@
 import { Box, Text } from "../../components";
+import React, { useCallback, useState } from "react";
 
-import React from "react";
-import { motion } from "framer-motion";
 import styled from "styled-components";
 
 const AnimatedBorder = styled(Box)`
-  min-width: 320px;
+  cursor: pointer;
+  @media screen and (min-width: 330px) {
+    min-width: 320px;
+  }
 `;
 
-const CardOverlay = styled(motion.div)`
+const CardOverlay = styled.div`
   position: absolute;
-  /* z-index: 6; */
   width: 100%;
   height: 100%;
   top: 0;
@@ -50,6 +51,14 @@ type ServiceCardProps = {
 };
 
 const OverLay = ({ id, description, header }: ServiceCardProps) => {
+  const [current, setCurrent] = useState<unknown>(null);
+
+  const getCurrentCard = useCallback(
+    (id: unknown) => setCurrent(id),
+    [current]
+  );
+
+  console.log(`current: ${current}`);
   return (
     <AnimatedBorder
       padding="1em"
@@ -58,6 +67,7 @@ const OverLay = ({ id, description, header }: ServiceCardProps) => {
       backgroundColor={`#0004`}
       gap="1em"
       position={{ position: "relative" }}
+      onClick={() => getCurrentCard(id)}
     >
       <Box justify="center" align="center" width="auto">
         <Text
@@ -95,7 +105,10 @@ const OverLay = ({ id, description, header }: ServiceCardProps) => {
           {description}
         </Text>
       </Box>
-      <CardOverlay whileHover={{ opacity: 1 }} whileTap={{ opacity: 1 }}>
+      <CardOverlay
+        style={{ opacity: current === id ? 1 : 0 }}
+        onClick={() => getCurrentCard(null)}
+      >
         <Box direction="column" padding="1em" width="100%" height="100%">
           <Text
             fontSize={"md"}
@@ -127,4 +140,4 @@ const OverLay = ({ id, description, header }: ServiceCardProps) => {
   );
 };
 
-export default OverLay;
+export default React.memo(OverLay);

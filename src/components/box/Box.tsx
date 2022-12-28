@@ -37,6 +37,7 @@ interface BoxProps {
   };
   rounded?: string;
   flex?: number;
+  onClick?: (arg: unknown) => void;
 }
 
 const Container = styled.div<BoxProps>`
@@ -62,9 +63,9 @@ const Container = styled.div<BoxProps>`
   ${(props) => props.position && Position};
 `;
 
-const Box: React.FC<BoxProps> = ({ children, className, ...rest }) => {
+const Box: React.FC<BoxProps> = ({ children, onClick, className, ...rest }) => {
   return (
-    <Container className={className} {...rest}>
+    <Container onClick={onClick} className={className} {...rest}>
       {children}
     </Container>
   );
