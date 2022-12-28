@@ -4,6 +4,12 @@ import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
 
+const message = `Dear Diyaa, I am writing to express my interest in hiring you as a software developer on a freelance basis.\nI have reviewed your portfolio and am impressed by the high quality of your work and the diverse range of projects you have completed.\nI am currently seeking a skilled software developer to work on a project for my company, and I believe that your skills and experience make you the perfect fit for this role. In particular, I was impressed by your experience as JavaScript Developer.
+\nI would be grateful if you could provide me with more information about your availability and rates for this project.
+\nI look forward to the opportunity to work with you and to see what we can accomplish together.
+
+\n\nSincerely`;
+
 type Props = {};
 
 const Responsive = styled(Box)`
@@ -76,9 +82,15 @@ const Home = (props: Props) => {
             className="home"
           >
             <Touchable onClick={() => {}} width="auto" className="home">
-              <Text fontSize={"md"} fontType="header" color="#fff">
-                Hire Me
-              </Text>
+              <a
+              target={'_blank'}
+                color="inherit"
+                href={`https://wa.me/+249111228700?text=${message}`}
+              >
+                <Text fontSize={"md"} fontType="header" color="#fff">
+                  Hire Me
+                </Text>
+              </a>
             </Touchable>
           </Box>
           <Touchable onClick={() => {}} width="auto" className="home">
@@ -87,7 +99,12 @@ const Home = (props: Props) => {
               fontType="header"
               gradient="var(--primary-gradient)"
             >
-              Download CV
+              <a
+                href="https://drive.google.com/u/0/uc?id=13w8mcIAMuYi3lVCBNYTXHxKuRa7OeYkP&export=download"
+                download
+              >
+                Download CV
+              </a>
             </Text>
           </Touchable>
         </Box>
