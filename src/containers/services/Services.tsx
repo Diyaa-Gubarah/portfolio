@@ -23,15 +23,7 @@ const animateBorder = keyframes`
     border-top-color: var(--primary-color);
   }
   
-`;
-
-const rotate = keyframes`
-  0% {
-    rotate:0deg;
-  }
-  100% {
-    rotate:360deg;
-  }
+  
 `;
 
 const AnimatedBorder = styled(Box)`
@@ -41,8 +33,6 @@ const AnimatedBorder = styled(Box)`
 
   &:hover {
     & svg {
-      animation: ${rotate} 3s linear infinite;
-      --webkit-animation: ${rotate} 3s linear infinite;
       fill: var(--primary-color);
     }
 
@@ -65,7 +55,7 @@ const Services = (props: Props) => {
             fontWeight="bold"
             fontSize={"xlg"}
             fontType="header"
-            color="#fff"
+            color="var(--text-primary-color)"
             textAlign="center"
           >
             How I Can Help You?
@@ -73,7 +63,7 @@ const Services = (props: Props) => {
           <Text
             fontSize={"md"}
             fontType="header"
-            color="#fff"
+            color="var(--text-primary-color)"
             textAlign="center"
           >
             As a JavaScript developer, I can provide a wide range of services to
@@ -91,8 +81,8 @@ const Services = (props: Props) => {
           wrap="wrap"
         >
           <ServiceCard
-            icon="react"
-            header="Web Development"
+            icon="node"
+            header="Server Development"
             description="Building dynamic, interactive websites, including custom web
           applications, API integration, and responsive design."
           />
@@ -146,7 +136,7 @@ const ServiceCard = ({ description, header, icon }: ServiceCardProps) => {
       gap="2em"
       justify="space-between"
     >
-      <Icon name={icon} size="3em" color="#fff" />
+      <Icon name={icon} size="3em" color="var(--text-primary-color)" />
       <Box
         className="service-text"
         direction="column"
@@ -155,10 +145,20 @@ const ServiceCard = ({ description, header, icon }: ServiceCardProps) => {
         rounded="0.5em"
         padding="1em 0.5em"
       >
-        <Text fontSize={"xlg"} fontType="header" color="#fff" fontWeight="bold">
+        <Text
+          fontSize={"lg"}
+          fontType="header"
+          color="var(--text-primary-color)"
+          fontWeight="bold"
+        >
           {header}
         </Text>
-        <Text fontSize={"sm"} fontType="header" color="#fff">
+        <Text
+          fontSize={"sm"}
+          fontType="header"
+          color="var(--text-primary-color)"
+          textAlign="left"
+        >
           {description}
         </Text>
       </Box>
