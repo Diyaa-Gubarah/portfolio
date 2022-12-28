@@ -52,7 +52,7 @@ const Home = (props: Props) => {
             fontType="body"
             gradient="var(--primary-gradient)"
           >
-            React Native & Jr MERN Stack Developer.
+            React Native, MERN Stack Developer.
           </Text>
         </Box>
         <Text fontSize={"xlg"} fontType="header" color="#fff">
