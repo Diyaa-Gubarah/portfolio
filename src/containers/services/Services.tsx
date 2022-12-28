@@ -42,6 +42,7 @@ const AnimatedBorder = styled(Box)`
   &:hover {
     & svg {
       animation: ${rotate} 3s linear infinite;
+      --webkit-animation: ${rotate} 3s linear infinite;
       fill: var(--primary-color);
     }
 
