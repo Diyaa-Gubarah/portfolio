@@ -100,7 +100,7 @@ const Home = (props: Props) => {
               gradient="var(--primary-gradient)"
             >
               <a
-                href="https://drive.google.com/u/0/uc?id=13w8mcIAMuYi3lVCBNYTXHxKuRa7OeYkP&export=download"
+                href="https://download1979.mediafire.com/butxpfp9cpig/9bjglmocxdqwbka/Diyaa-Gubarah.CV.pdf"
                 download
               >
                 Download CV
