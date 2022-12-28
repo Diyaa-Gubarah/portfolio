@@ -54,7 +54,7 @@ const SidenavContainer = styled(Box)`
     }
   }
 
-  @media (min-width: 471px) {
+  @media (min-width: 541px) {
     display: none;
   }
 `;
@@ -75,7 +75,7 @@ const SideNav: React.ForwardRefRenderFunction<unknown, SidenavProps> = (
   }));
 
   return show ? (
-    <SidenavContainer backgroundColor="#0008" padding="0.75em">
+    <SidenavContainer backgroundColor="#0008" padding="1em 0.75em">
       <Box position={{ position: "absolute" }}>
         <Touchable
           className="menu"

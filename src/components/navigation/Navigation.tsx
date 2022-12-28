@@ -1,4 +1,5 @@
 import SideNav, { SidenavHandle } from "../sidenav/SideNav";
+import styled, { css } from "styled-components";
 
 import Box from "../box/Box";
 import CustomLink from "../custom-link/CustomLink";
@@ -8,13 +9,27 @@ import React from "react";
 import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
 import images from "../../constants/images";
-import styled from "styled-components";
 
 const ResponsiveNavigation = styled(Box)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0.75em 1em;
+  background: var(--background-color);
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+  ${(props: { hasScrolled: boolean }) =>
+    props.hasScrolled &&
+    css`
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    `}
+
   & .menu {
     display: none;
   }
-  @media screen and (max-width: 470px) {
+  @media screen and (max-width: 540px) {
     & .navigation {
       display: none;
     }
@@ -37,8 +52,27 @@ const Navigation = () => {
 
   const hide = React.useCallback(() => setShow((p) => !p), [show]);
 
+  const [hasScrolled, setHasScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <ResponsiveNavigation gap="1em" align="center" justify="space-between">
+    <ResponsiveNavigation
+      gap="1em"
+      align="center"
+      justify="space-between"
+      hasScrolled={hasScrolled}
+    >
       <SideNav ref={sideRef} toggleMenu={hide} />
       <Image
         alt="Logo"
@@ -49,27 +83,27 @@ const Navigation = () => {
       />
       <Box gap="1em" className="navigation">
         <CustomLink href="#home" id="home">
-          <Text fontSize='md' fontType="header">
+          <Text fontSize="md" fontType="header">
             Me.
           </Text>
         </CustomLink>
         <CustomLink href="#services" id="services">
-          <Text fontSize='md' fontType="header">
+          <Text fontSize="md" fontType="header">
             Services.
           </Text>
         </CustomLink>
         <CustomLink href="#projects" id="projects">
-          <Text fontSize='md' fontType="header">
+          <Text fontSize="md" fontType="header">
             Projects.
           </Text>
         </CustomLink>
         <CustomLink href="#testimonial" id="testimonial">
-          <Text fontSize='md' fontType="header">
+          <Text fontSize="md" fontType="header">
             Testimonial.
           </Text>
         </CustomLink>
         <CustomLink href="#contact" id="contact">
-          <Text fontSize='md' fontType="header">
+          <Text fontSize="md" fontType="header">
             Contact.
           </Text>
         </CustomLink>

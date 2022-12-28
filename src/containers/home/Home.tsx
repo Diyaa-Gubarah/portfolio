@@ -4,11 +4,11 @@ import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
 
-const message = `Dear Diyaa, I am writing to express my interest in hiring you as a software developer on a freelance basis.\nI have reviewed your portfolio and am impressed by the high quality of your work and the diverse range of projects you have completed.\nI am currently seeking a skilled software developer to work on a project for my company, and I believe that your skills and experience make you the perfect fit for this role. In particular, I was impressed by your experience as JavaScript Developer.
-\nI would be grateful if you could provide me with more information about your availability and rates for this project.
+const message = `Dear *Diyaa*, I am writing to express my interest in hiring you as a software developer on a freelance basis.\nI have reviewed your portfolio and am impressed by the high quality of your work and the diverse range of projects you have completed.\nI am currently seeking a skilled software developer to work on a project for my company, and I believe that your skills and experience make you the perfect fit for this role. In particular, I was impressed by your experience as JavaScript Developer.
+\tI would be grateful if you could provide me with more information about your availability and rates for this project.
 \nI look forward to the opportunity to work with you and to see what we can accomplish together.
 
-\n\nSincerely`;
+\t\nSincerely`;
 
 type Props = {};
 
