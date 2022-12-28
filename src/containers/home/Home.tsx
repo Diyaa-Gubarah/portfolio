@@ -72,7 +72,7 @@ const Home = (props: Props) => {
             width="max-content"
             backgroundColor="var(--primary-gradient)"
             rounded="0.25em"
-            padding="0.35em 0.75em"
+            padding="0.35em 0.65em"
             className="home"
           >
             <Touchable onClick={() => {}} width="auto" className="home">
