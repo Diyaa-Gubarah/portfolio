@@ -8,6 +8,7 @@ const AnimatedCard = styled(Box)`
   overflow: hidden;
   position: relative;
   min-height: 300px;
+  min-width: 100%;
 
   @media screen and (min-width: 330px) {
     min-width: 320px;
