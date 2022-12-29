@@ -1,5 +1,5 @@
 import { Box, Navigation, Text, Touchable } from "./components";
-import { Home, Services } from "./containers";
+import { Home, Projects, Services } from "./containers";
 
 import EmptySpan from "./components/empty-span/EmptySpan";
 import React from "react";
@@ -27,7 +27,7 @@ const Main = (props: Props) => {
       <EmptySpan id="services" />.
       <Services />
       <EmptySpan id="projects" />
-      {/* <Home /> */}
+      <Projects />
       <EmptySpan id="testimonial" />
       {/* <Home /> */}
       <EmptySpan id="contact" />

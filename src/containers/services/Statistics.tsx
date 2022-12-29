@@ -1,7 +1,6 @@
 import { Box, Text } from "../../components";
 import React, { useEffect, useMemo, useState } from "react";
 
-import images from "../../constants/images";
 import styled from "styled-components";
 
 type Props = {};
@@ -16,10 +15,6 @@ const Static = styled(Box)`
     }
 
     & .static-card {
-      /* flex: 1;
-      justify-content: space-between;
-      gap: 1em; */
-
       @media screen and (max-width: 450px) {
         & div {
           flex-direction: column;
@@ -34,12 +29,32 @@ const Static = styled(Box)`
 const Statistics = (props: Props) => {
   return (
     <Static justify="space-between" gap="2em">
+      <Box direction="column" flex={1} gap="1.5em" className="static-card" justify="flex-end">
+        <Box gap="2em" justify="space-between">
+          <StaticCard number={20} suffix="YEARS" />
+          <StaticCard number={40} suffix="PROJECTS" />
+          <StaticCard number={20} suffix="CLIENTS" />
+        </Box>
+        <Text fontSize={"lg"} fontType="header" color="#fff">
+          I will bring passion, knowledge, and expertise to every project,you
+          can trust that I will go above and beyond to{" "}
+          <Text
+            fontType="header"
+            fontSize="none"
+            fontWeight="bold"
+            gradient="var(--primary-gradient)"
+          >
+            ENSURE YOUR SUCCESS.
+          </Text>
+        </Text>
+      </Box>
+
       <Box
         direction="column"
         gap="0.75em"
         className="static-text"
         flex={1}
-        backgroundColor={"#0006"}
+        backgroundColor={"#0004"}
         rounded="0.5em"
         padding="1em"
       >
@@ -47,57 +62,18 @@ const Statistics = (props: Props) => {
           Who's DIYAA?
         </Text>
         <Text
-          color="var(--text-primary-color)"
+          color="var(--text-secondary-color)"
           fontSize={"md"}
           fontType="header"
+          lineHeight="1.5em"
         >
           {`I graduated as a Surveying Engineer then turned Fullstack
           Freelancer, I have a diverse range of skills and experiences that make
-          me a valuable asset to you.`}
-        </Text>
-        <Text
-          fontSize={"md"}
-          fontType="header"
-          color="var(--text-primary-color)"
-        >
-          {`
-          My background in surveying gives me a strong foundation in analysis and management, and my self-taught
+          me a valuable asset to you, my background in surveying gives me a strong foundation in analysis and management, and my self-taught
           software development skills show my determination and dedication to
-          learning new things.`}
-        </Text>
-        <Text
-          fontSize={"md"}
-          fontType="header"
-          color="var(--text-primary-color)"
-        >
-          {`
-          Shifting careers is never easy, but I've worked
+          learning new things, shifting careers is never easy, but I've worked
           hard and persevered to build a successful career as a freelancer.`}
         </Text>
-      </Box>
-      <Box direction="column" flex={1} gap="1.5em" className="static-card">
-        <Text fontWeight="bold" fontSize={"xlg"} fontType="header" color="#fff">
-          With
-        </Text>
-        <Box gap="2em" width="100%" justify="space-between">
-          <StaticCard number={20} prefix="YEARS" suffix="Experiences" />
-          <StaticCard number={40} prefix="PROJECTS" suffix="Completed" />
-          <StaticCard number={20} prefix="HAPPY" suffix="Clients" />
-        </Box>
-        <Box backgroundColor={"#0006"} rounded="0.5em" padding="1em">
-          <Text fontSize={"lg"} fontType="header" color="#fff">
-            I will bring passion, knowledge, and expertise to every project,you
-            can trust that I will go above and beyond to{" "}
-            <Text
-              fontType="header"
-              fontSize="none"
-              fontWeight="bold"
-              gradient="var(--primary-gradient)"
-            >
-              ENSURE YOUR SUCCESS.
-            </Text>
-          </Text>
-        </Box>
       </Box>
     </Static>
   );
@@ -107,11 +83,10 @@ export default Statistics;
 
 interface StaticCardProps {
   number: number;
-  prefix: string;
   suffix: string;
 }
 
-const StaticCard: React.FC<StaticCardProps> = ({ number, prefix, suffix }) => {
+const StaticCard: React.FC<StaticCardProps> = ({ number, suffix }) => {
   const numbers = Array.from({ length: number }, (_, i) => i + 1);
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentNumber = useMemo(() => numbers[currentIndex], [currentIndex]);
@@ -134,9 +109,12 @@ const StaticCard: React.FC<StaticCardProps> = ({ number, prefix, suffix }) => {
         gradient="var(--primary-gradient)"
       >
         +{`${currentNumber} `}
-        {prefix}
       </Text>
-      <Text fontSize={"md"} fontType="header" color="#fff">
+      <Text
+        fontSize={"md"}
+        fontType="header"
+        gradient="var(--primary-gradient)"
+      >
         {suffix}
       </Text>
     </Box>

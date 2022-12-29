@@ -18,7 +18,7 @@ const CardOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   border-radius: 1em;
   opacity: 0;
 
@@ -28,14 +28,13 @@ const CardOverlay = styled.div`
   /* Style the scrollbar */
   ::-webkit-scrollbar {
     width: 4px;
-    /* background-color: #f5f5f5; */
+    background-color: transparent;
   }
 
   /* Style the thumb (the part that you drag) */
   ::-webkit-scrollbar-thumb {
     background-color: var(--primary-color);
     border-radius: 10px;
-    height: 50px; /* Set the thumb height to 50px */
   }
 
   /* Style the thumb hover state */
@@ -58,7 +57,6 @@ const OverLay = ({ id, description, header }: ServiceCardProps) => {
     [current]
   );
 
-  console.log(`current: ${current}`);
   return (
     <AnimatedBorder
       padding="1em"
@@ -67,7 +65,7 @@ const OverLay = ({ id, description, header }: ServiceCardProps) => {
       backgroundColor={`#0004`}
       gap="1em"
       position={{ position: "relative" }}
-      onClick={() => getCurrentCard(id)}
+      // onClick={() => getCurrentCard(id)}
     >
       <Box justify="center" align="center" width="auto">
         <Text

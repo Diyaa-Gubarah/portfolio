@@ -59,7 +59,7 @@ const Home = (props: Props) => {
             fontType="body"
             gradient="var(--primary-gradient)"
           >
-            React Native, MERN Stack Developer.
+            JavaScript Developer w/ TypeScript.
           </Text>
         </Box>
         <Text fontSize={"xlg"} fontType="header" color="#fff">
@@ -84,7 +84,7 @@ const Home = (props: Props) => {
           >
             <Touchable onClick={() => {}} width="auto" className="home">
               <a
-              target={'_blank'}
+                target={"_blank"}
                 color="inherit"
                 href={`https://wa.me/+249111228700?text=${message}`}
               >

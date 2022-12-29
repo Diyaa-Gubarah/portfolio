@@ -20,6 +20,7 @@ import {
 } from "react-icons/si";
 
 import React from "react";
+import { TbArrowUpRight } from "react-icons/tb";
 
 export type IconType =
   | "django"
@@ -40,7 +41,8 @@ export type IconType =
   | "whatsapp"
   | "gmail"
   | "menu"
-  | "close";
+  | "close"
+  | "show";
 
 const icons = {
   django: SiDjango,
@@ -62,6 +64,7 @@ const icons = {
   gmail: SiGmail,
   menu: CgMenuRightAlt,
   close: CgClose,
+  show: TbArrowUpRight,
 };
 
 type Props = {
