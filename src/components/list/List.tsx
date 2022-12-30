@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 interface ListProps<T, P> {
   data?: T[];
@@ -11,8 +11,11 @@ interface ListProps<T, P> {
 
 const ListWrapper = styled.div<ListProps<any, any>>`
   display: flex;
+  align-items: center;
+
   flex-direction: ${(props) => props.direction};
   gap: ${(props) => props.gap};
+
   overflow-x: scroll;
   scroll-snap-align: start; // add !important flag
   scroll-snap-type: x mandatory;

@@ -8,10 +8,10 @@ const AnimatedCard = styled(Box)`
   overflow: hidden;
   position: relative;
   min-height: 300px;
-  min-width: 100%;
+  min-width: 330px;
 
-  @media screen and (min-width: 330px) {
-    min-width: 320px;
+  @media screen and (max-width: 380px) {
+    min-width: 100%;
   }
 
   & .card-button {
@@ -50,7 +50,6 @@ const AnimatedCard = styled(Box)`
 type Props = { item: unknown };
 
 const ProjectCard: React.FC<Props> = ({ item }) => {
-  console.log(`Item: ${JSON.stringify(item)}`);
   return (
     <AnimatedCard
       direction="column"

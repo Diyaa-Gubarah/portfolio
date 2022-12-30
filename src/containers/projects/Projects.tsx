@@ -1,17 +1,15 @@
-import { Box, Icon, Image, List, Text, Touchable } from "../../components";
+import { Box, List, Text } from "../../components";
 
 import { OFFERS } from "../../data";
 import ProjectCard from "./ProjectCard";
 import React from "react";
-import images from "../../constants/images";
-import styled from "styled-components";
 
 type Props = {};
 
 const Projects = (props: Props) => {
   return (
-    <Box direction="column" padding="3em 0" gap="2em" flex={1}>
-      <Box direction="column" align="center" gap="1em">
+    <Box direction="column" padding="3em 0" gap="3em" flex={1}>
+      <Box direction="column" align="center" gap="0.75em">
         <Text
           fontWeight="bold"
           fontSize={"xlg"}

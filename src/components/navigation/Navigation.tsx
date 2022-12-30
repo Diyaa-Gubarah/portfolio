@@ -18,8 +18,11 @@ const ResponsiveNavigation = styled(Box)`
   z-index: 1000;
   padding: 0.75em 1em;
   background: var(--background-color);
-  max-width: 1200px;
-  margin-inline: auto;
+
+  & .navigation-container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
   ${(props: { hasScrolled: boolean }) =>
@@ -69,56 +72,59 @@ const Navigation = () => {
   }, []);
 
   return (
-    <ResponsiveNavigation
-      gap="1em"
-      align="center"
-      justify="space-between"
-      hasScrolled={hasScrolled}
-    >
-      <SideNav ref={sideRef} toggleMenu={hide} />
-      <Image
-        alt="Logo"
-        src={images.logo}
-        width="1.75em"
-        height="1.75em"
-        objectFit="contain"
-      />
-      <Box gap="1em" className="navigation">
-        <CustomLink href="#home" id="home">
-          <Text fontSize="md" fontType="header">
-            Me.
-          </Text>
-        </CustomLink>
-        <CustomLink href="#services" id="services">
-          <Text fontSize="md" fontType="header">
-            Services.
-          </Text>
-        </CustomLink>
-        <CustomLink href="#projects" id="projects">
-          <Text fontSize="md" fontType="header">
-            Projects.
-          </Text>
-        </CustomLink>
-        <CustomLink href="#testimonial" id="testimonial">
-          <Text fontSize="md" fontType="header">
-            Testimonial.
-          </Text>
-        </CustomLink>
-        <CustomLink href="#contact" id="contact">
-          <Text fontSize="md" fontType="header">
-            Contact.
-          </Text>
-        </CustomLink>
+    <ResponsiveNavigation hasScrolled={hasScrolled}>
+      <Box
+        gap="1em"
+        align="center"
+        justify="space-between"
+        flex={1}
+        className="navigation-container"
+      >
+        <SideNav ref={sideRef} toggleMenu={hide} />
+        <Image
+          alt="Logo"
+          src={images.logo}
+          width="1.75em"
+          height="1.75em"
+          objectFit="contain"
+        />
+        <Box gap="1em" className="navigation">
+          <CustomLink href="#home" id="home">
+            <Text fontSize="md" fontType="header">
+              Me.
+            </Text>
+          </CustomLink>
+          <CustomLink href="#services" id="services">
+            <Text fontSize="md" fontType="header">
+              Services.
+            </Text>
+          </CustomLink>
+          <CustomLink href="#projects" id="projects">
+            <Text fontSize="md" fontType="header">
+              Projects.
+            </Text>
+          </CustomLink>
+          <CustomLink href="#testimonial" id="testimonial">
+            <Text fontSize="md" fontType="header">
+              Testimonial.
+            </Text>
+          </CustomLink>
+          <CustomLink href="#contact" id="contact">
+            <Text fontSize="md" fontType="header">
+              Contact.
+            </Text>
+          </CustomLink>
+        </Box>
+        {show ? (
+          <Touchable
+            className="menu"
+            hoverStyle={`transform: scale(1.2); `}
+            onClick={openSideNav}
+          >
+            <Icon name="menu" size="1.2em" color="var(--primary-color)" />
+          </Touchable>
+        ) : null}
       </Box>
-      {show ? (
-        <Touchable
-          className="menu"
-          hoverStyle={`transform: scale(1.2); `}
-          onClick={openSideNav}
-        >
-          <Icon name="menu" size="1.2em" color="var(--primary-color)" />
-        </Touchable>
-      ) : null}
     </ResponsiveNavigation>
   );
 };

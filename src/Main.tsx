@@ -1,22 +1,10 @@
-import { Box, Navigation, Text, Touchable } from "./components";
-import { Home, Projects, Services } from "./containers";
+import { Box, Navigation } from "./components";
+import { Contacts, Home, Projects, Services, Testimonials } from "./containers";
 
 import EmptySpan from "./components/empty-span/EmptySpan";
 import React from "react";
 
 type Props = {};
-
-const data = [{ id: 1, name: "Item 1", title: "jhj gjgjgjghj" }];
-const Item: React.FC<{ item: typeof data[0] }> = ({ item }) => (
-  <Touchable
-    hoverStyle={`transform: scale(0.95);`}
-    onClick={() => console.log("clicked")}
-  >
-    <Text color="#fff" fontSize="lg" fontWeight="bold">
-      {item.title}
-    </Text>
-  </Touchable>
-);
 
 const Main = (props: Props) => {
   return (
@@ -29,9 +17,9 @@ const Main = (props: Props) => {
       <EmptySpan id="projects" />
       <Projects />
       <EmptySpan id="testimonial" />
-      {/* <Home /> */}
+      <Testimonials />
       <EmptySpan id="contact" />
-      {/* <Home /> */}
+      <Contacts />
     </Box>
   );
 };

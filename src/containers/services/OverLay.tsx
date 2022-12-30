@@ -34,31 +34,21 @@ const OverLay = ({ id, description, header }: ServiceCardProps) => {
       backgroundColor={"#0004"}
       rounded="1em"
       padding="1em"
-      textAlign="center"
       position={{ position: "relative" }}
+      justify="space-between"
     >
-      {/* <Box
-        width="1em"
-        height="150%"
-        position={{ position: "absolute", top:-40 }}
-        className="services-tag"
-      >
-        {""}
-      </Box> */}
+      <Text fontSize={"md"} fontType="header" color="var(--text-primary-color)">
+        {description}
+      </Text>
       <Text
         fontSize={"lg"}
         fontType="header"
         color="var(--text-primary-color)"
+        gradient="var(--primary-gradient)"
         fontWeight="bold"
+        textAlign="right"
       >
         {header}
-      </Text>
-      <Text
-        fontSize={"md"}
-        fontType="header"
-        color="var(--text-secondary-color)"
-      >
-        {description}
       </Text>
     </AnimatedBorder>
   );
