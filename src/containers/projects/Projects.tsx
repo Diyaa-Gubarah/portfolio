@@ -8,21 +8,9 @@ import styled from "styled-components";
 
 type Props = {};
 
-const data = [{ id: 1, name: "Item 1", title: "jhj gjgjgjghj" }];
-const Item: React.FC<{ item: typeof data[0] }> = ({ item }) => (
-  <Touchable
-    hoverStyle={`transform: scale(0.95);`}
-    onClick={() => console.log("clicked")}
-  >
-    <Text color="#fff" fontSize="lg" fontWeight="bold">
-      {item.title}
-    </Text>
-  </Touchable>
-);
-
 const Projects = (props: Props) => {
   return (
-    <Box direction="column" padding="3em 0" gap="2em">
+    <Box direction="column" padding="3em 0" gap="2em" flex={1}>
       <Box direction="column" align="center" gap="1em">
         <Text
           fontWeight="bold"
@@ -45,10 +33,10 @@ const Projects = (props: Props) => {
           successes.
         </Text>
       </Box>
+
       {/* Project Card */}
-      <Box flex={1} justify="space-between" margin="auto" gap="1.5em" wrap="wrap">
-        {React.Children.toArray(OFFERS.map((item) => <ProjectCard />))}
-      </Box>
+
+      <List Item={ProjectCard} data={OFFERS} gap="1.5em" />
     </Box>
   );
 };

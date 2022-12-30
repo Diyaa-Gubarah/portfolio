@@ -18,6 +18,8 @@ const ResponsiveNavigation = styled(Box)`
   z-index: 1000;
   padding: 0.75em 1em;
   background: var(--background-color);
+  max-width: 1200px;
+  margin-inline: auto;
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
   ${(props: { hasScrolled: boolean }) =>

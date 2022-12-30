@@ -38,18 +38,19 @@ const AnimatedCard = styled(Box)`
       right: 0;
       bottom: 0;
       rotate: 0deg;
+      -webkit-rotate: 0deg;
     }
     .card-button {
       transition: 1s;
-
       display: inline-flex;
     }
   }
 `;
 
-type Props = {};
+type Props = { item: unknown };
 
-const ProjectCard = (props: Props) => {
+const ProjectCard: React.FC<Props> = ({ item }) => {
+  console.log(`Item: ${JSON.stringify(item)}`);
   return (
     <AnimatedCard
       direction="column"

@@ -6,27 +6,24 @@ interface ListProps<T, P> {
   data?: T[];
   Item?: React.ComponentType<P>;
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
-  size?: number;
-  radius?: number;
-  color?: string;
+  gap?: string;
 }
 
 const ListWrapper = styled.div<ListProps<any, any>>`
   display: flex;
   flex-direction: ${(props) => props.direction};
-
+  gap: ${(props) => props.gap};
+  overflow-x: scroll;
+  scroll-snap-align: start; // add !important flag
+  scroll-snap-type: x mandatory;
+  /* hide scrollbar */
   ::-webkit-scrollbar {
-    width: ${(props) => props.size || 8}px;
-    border-radius: ${(props) => props.radius || 4}px;
-    background-color: ${(props) => props.color || "#F5F5F5"};
+    width: 0;
+    height: 0;
   }
 
-  ::-webkit-scrollbar-thumb {
-    border-radius: ${(props) => props.radius || 4}px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: ${(props) => props.color || "#555"};
-  }
+  /* set width to accommodate all items */
+  width: 100%;
 `;
 
 const List: React.FC<ListProps<any, any>> = ({ data, Item, ...props }) => {

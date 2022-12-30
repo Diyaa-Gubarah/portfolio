@@ -11,5 +11,5 @@ export default [
     { id: "8", header: 'E-commerce development', description: "I can also offer e-commerce development services, including building custom shopping carts, payment gateways, and order management systems." },
     { id: "9", header: 'Internet of Things (IoT) development', description: "I can build applications that interact with connected devices and sensors as part of the Internet of Things (IoT)." },
     { id: "10", header: 'Machine learning', description: "Building machine learning models and integrating them into web or mobile applications using libraries like TensorFlow.js." },
-    { id: "10", header: 'Consulting and training', description: "As a TypeScript expert, I can also provide consulting and training services to help you or your team learn more about this powerful language and how to use it effectively." },
+    { id: "11", header: 'Consulting and training', description: "As a TypeScript expert, I can also provide consulting and training services to help you or your team learn more about this powerful language and how to use it effectively." },
 ]
