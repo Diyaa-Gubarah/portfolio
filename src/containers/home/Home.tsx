@@ -1,15 +1,8 @@
-import { Box, Image, Text, Touchable } from "../../components";
+import { Box, Enquiry, Image, Text } from "../../components";
 
 import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
-
-const message = `I really _like_ your portfolio and think you'd be a great fit for a project I'm working on. Your experience as a *JavaScript Developer* is especially impressive.
-Could you let me know your availability and rates for this project?
-
-Looking forward to working with you and seeing what we can accomplish together.
-
-Sincerely`;
 
 type Props = {};
 
@@ -75,26 +68,8 @@ const Home = (props: Props) => {
         </Text>
 
         <Box align="center" gap="1em">
-          <Box
-            width="max-content"
-            backgroundColor="var(--primary-gradient)"
-            rounded="0.25em"
-            padding="0.35em 0.65em"
-            className="home"
-          >
-            <Touchable onClick={() => {}} width="auto" className="home">
-              <a
-                target={"_blank"}
-                color="inherit"
-                href={`https://wa.me/+249111228700?text=${message}`}
-              >
-                <Text fontSize={"md"} fontType="header" color="#fff">
-                  Hire Me
-                </Text>
-              </a>
-            </Touchable>
-          </Box>
-          <Touchable onClick={() => {}} width="auto" className="home">
+          <Enquiry />
+          <Box width="auto" className="home" justify="center">
             <Text
               fontSize={"md"}
               fontType="header"
@@ -107,7 +82,7 @@ const Home = (props: Props) => {
                 Download CV
               </a>
             </Text>
-          </Touchable>
+          </Box>
         </Box>
       </Box>
       <Box flex={1} align="center" justify="center" margin="auto">

@@ -1,4 +1,4 @@
-import { Box, Icon, Text, Touchable } from "../../components";
+import { Box, Enquiry, Icon, Text, Touchable } from "../../components";
 
 import React from "react";
 import images from "../../constants/images";
@@ -50,22 +50,7 @@ const Contacts = (props: Props) => {
           look forward to the opportunity to work with you and help bring your
           vision to life.
         </Text>
-        <Box
-          backgroundColor="var(--primary-gradient)"
-          rounded="0.25em"
-          padding="0.35em 0.65em"
-          justify="center"
-        >
-          <a
-            target={"_blank"}
-            color="inherit"
-            href={`https://wa.me/+249111228700?text=khg`}
-          >
-            <Text fontSize={"md"} fontType="header" color="#fff">
-              Hire Me
-            </Text>
-          </a>
-        </Box>
+        <Enquiry />
       </Box>
       <Box
         flex={1}
