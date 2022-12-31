@@ -102,7 +102,7 @@ function EnquiryForm({ close }: Props) {
             direction="column"
             gap="0.75em"
             width="100%"
-            className="enquiry-form-item"
+            align="center"
           >
             <Text
               fontSize={"sm"}
@@ -112,7 +112,9 @@ function EnquiryForm({ close }: Props) {
             >
               1. What's Your Project Type
             </Text>
-            <List Item={Option} data={OptionData} gap="0.5em" />
+            <Box width="100%" justify="center">
+              <List Item={Option} data={OptionData} gap="0.5em" />
+            </Box>
           </Box>
         ))
       )}

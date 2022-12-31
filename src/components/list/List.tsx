@@ -26,7 +26,7 @@ const ListWrapper = styled.div<ListProps<any, any>>`
   }
 
   /* set width to accommodate all items */
-  width: 100%;
+  width: auto;
 `;
 
 const List: React.FC<ListProps<any, any>> = ({ data, Item, ...props }) => {
