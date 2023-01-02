@@ -16,11 +16,14 @@ interface GridProps {
   autoFlow?: GridFlow;
   justifyItems?: GridAlignment;
   alignItems?: GridAlignment;
+
+  m_width?: string;
 }
 
 const StyledGrid = styled.div<GridProps>`
   display: grid;
-  grid-template-columns: ${(props) => props.columns};
+  grid-template-columns: ${(props) =>
+    `repeat(auto-fit,minmax(${props.m_width},1fr))`};
   grid-template-rows: ${(props) => props.rows};
   grid-gap: ${(props) => props.gap};
   grid-auto-flow: ${(props) => props.autoFlow};

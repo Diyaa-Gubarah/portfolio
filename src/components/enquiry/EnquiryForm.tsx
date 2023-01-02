@@ -2,35 +2,28 @@ import React, { useCallback, useState } from "react";
 
 import Box from "../box/Box";
 import List from "../list/List";
+import { OptionProps } from "../../data/questions";
+import { QUESTIONS } from "../../data";
 import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-const OptionData = [
-  { id: "1", option: "option 1", value: "op1" },
-  { id: "2", option: "option 2", value: "op3" },
-  { id: "3", option: "option 3", value: "op3" },
-  { id: "4", option: "option 4", value: "op4" },
-  { id: "5", option: "option 5", value: "op5" },
-];
-
 type Props = { close: () => void };
 
-const OptionWrapper = styled(motion.div)<{ current: boolean }>`
+const OptionWrapper = styled(motion.div)<{}>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 0.15em 0.5em;
   border-radius: 0.25em;
   cursor: pointer;
-  background: ${(props) =>
-    props.current ? "var(--primary-color)" : "#f2f2f2"};
   min-width: max-content;
 
+  background: ${(props) => "#f2f2f2"};
+
   & .option-text {
-    color: ${(props) =>
-      props.current ? "var(--background)" : "--text-secondary-color"};
+    color: ${(props) => "--text-secondary-color"};
   }
 `;
 
@@ -97,23 +90,18 @@ function EnquiryForm({ close }: Props) {
       </Box>
 
       {React.Children.toArray(
-        Array.from("diyaayahya").map(() => (
-          <Box
-            direction="column"
-            gap="0.75em"
-            width="100%"
-            align="center"
-          >
+        QUESTIONS.map((item) => (
+          <Box direction="column" gap="0.75em" width="100%" align="center">
             <Text
               fontSize={"sm"}
               fontType="header"
               color="var(--text-secondary-color)"
               fontWeight="bold"
             >
-              1. What's Your Project Type
+              {item.question}
             </Text>
             <Box width="100%" justify="center">
-              <List Item={Option} data={OptionData} gap="0.5em" />
+              <List Item={Option} data={item.options} gap="0.5em" />
             </Box>
           </Box>
         ))
@@ -156,9 +144,7 @@ function EnquiryForm({ close }: Props) {
 
 export default EnquiryForm;
 
-type OptionProps = { item: typeof OptionData[0] };
-
-const Option = React.memo(({ item }: OptionProps) => {
+const Option = React.memo(({ item }: { item: OptionProps }) => {
   const [op, setOp] = useState<string>("");
   const selectedOption = useCallback(
     (id: string) => {
@@ -167,21 +153,16 @@ const Option = React.memo(({ item }: OptionProps) => {
     [op]
   );
 
-  console.log(item.id === op);
-
   return (
-    <OptionWrapper
-      onClick={() => selectedOption(item.id)}
-      current={item.id === op}
-    >
+    <OptionWrapper onClick={() => selectedOption(item.id)}>
       <Text
         fontSize={"sm"}
         fontType="header"
-        color="var(--text-secondary-color)"
+        color="var(--background-color)"
         textAlign="center"
         className="option-text"
       >
-        {item.option}
+        {item.name}
       </Text>
     </OptionWrapper>
   );

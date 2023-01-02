@@ -1,6 +1,7 @@
 import { Box, Text } from "../../components";
 import React, { useCallback, useState } from "react";
 
+import images from "../../constants/images";
 import styled from "styled-components";
 
 const AnimatedBorder = styled(Box)`
@@ -23,20 +24,27 @@ type ServiceCardProps = {
   id: string;
   header: string;
   description: string;
+  count: number;
 };
 
-const OverLay = ({ id, description, header }: ServiceCardProps) => {
+const OverLay = ({ count, description, header }: ServiceCardProps) => {
   return (
     <AnimatedBorder
       flex={1}
       direction="column"
       gap="1em"
-      backgroundColor={"#0004"}
+      backgroundColor="#0004"
       rounded="1em"
       padding="1em"
-      position={{ position: "relative" }}
       justify="space-between"
     >
+      <Text
+        fontSize={"sm"}
+        fontType="header"
+        color="var(--text-secondary-color)"
+      >
+        {`${count} project${count > 1 ? "s" : ""}`}
+      </Text>
       <Text fontSize={"md"} fontType="header" color="var(--text-primary-color)">
         {description}
       </Text>

@@ -1,4 +1,4 @@
-import { Box, Text } from "../../components";
+import { Box, Grid, Text } from "../../components";
 
 import { OFFERS } from "../../data";
 import OverLay from "./OverLay";
@@ -45,6 +45,7 @@ const Services = (props: Props) => {
             OFFERS.map((item) => (
               <OverLay
                 id={item.id}
+                count={item.count}
                 header={item.header}
                 description={item.description}
               />

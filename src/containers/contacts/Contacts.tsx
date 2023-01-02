@@ -63,11 +63,18 @@ const Contacts = (props: Props) => {
           fontSize="sm"
           fontWeight="bold"
           fontType="header"
-          color="var(--text-primary-color)"
+          gradient="var(--text-primary-color)"
         >
-          DIYAA GUBARAH
+          Build with
+          <Text
+            fontSize="sm"
+            fontWeight="bold"
+            fontType="header"
+            gradient="var(--primary-gradient)"
+          >{` ❤ `}</Text>
+          • Diyaa Gubarah <span className="current-date"></span>
         </Text>
-        <Box align="center" gap="1.5em">
+        <Box align="center" gap="2em">
           <Touchable onClick={() => {}}>
             <a
               target={"_blank"}
@@ -77,7 +84,7 @@ const Contacts = (props: Props) => {
               <Icon
                 name="linkedin"
                 color="var(--primary-color)"
-                size="0.85em"
+                size="0.95em"
               />
             </a>
           </Touchable>
@@ -87,7 +94,7 @@ const Contacts = (props: Props) => {
               color="inherit"
               href={`https://mail.google.com/mail/?view=cm&fs=1&cc=diyaa.gubarah@gmail.com&su=${subject}&body=${body}`}
             >
-              <Icon name="gmail" color="var(--primary-color)" size="0.85em" />
+              <Icon name="gmail" color="var(--primary-color)" size="0.95em" />
             </a>
           </Touchable>
           <Touchable onClick={() => {}}>
@@ -96,7 +103,7 @@ const Contacts = (props: Props) => {
               color="inherit"
               href={`https://github.com/Diyaa-Gubarah`}
             >
-              <Icon name="github" color="var(--primary-color)" size="0.85em" />
+              <Icon name="github" color="var(--primary-color)" size="0.95em" />
             </a>
           </Touchable>
         </Box>
