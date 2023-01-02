@@ -77,10 +77,10 @@ const HireOption: OptionProps[] = [
 
 
 
-type Question = {
+export type Question = {
     id: string;
     question: string;
-    options: [];
+    options: OptionProps[];
 }
 
 

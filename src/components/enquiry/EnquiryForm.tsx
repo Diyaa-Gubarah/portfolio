@@ -6,6 +6,7 @@ import { OptionProps } from "../../data/questions";
 import { QUESTIONS } from "../../data";
 import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
+import { formReducer } from "./EnguiryFormReducer";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -58,6 +59,10 @@ const REnquiryForm = styled(Box)`
 `;
 
 function EnquiryForm({ close }: Props) {
+  const [{ summary }, dispatch] = React.useReducer(formReducer, {
+    summary: [],
+  });
+
   return (
     <REnquiryForm
       direction="column"
@@ -91,11 +96,17 @@ function EnquiryForm({ close }: Props) {
 
       {React.Children.toArray(
         QUESTIONS.map((item) => (
-          <Box direction="column" gap="0.75em" width="100%" align="center">
+          <Box
+            direction="column"
+            gap="0.75em"
+            width="100%"
+            align="center"
+            onClick={() => dispatch({ type: "ADD_QUESTION", payload: item })}
+          >
             <Text
               fontSize={"sm"}
               fontType="header"
-              color="var(--text-secondary-color)"
+              color="var(--background-color)"
               fontWeight="bold"
             >
               {item.question}
@@ -145,16 +156,19 @@ function EnquiryForm({ close }: Props) {
 export default EnquiryForm;
 
 const Option = React.memo(({ item }: { item: OptionProps }) => {
-  const [op, setOp] = useState<string>("");
-  const selectedOption = useCallback(
-    (id: string) => {
-      setOp(id);
+  const [answer, setAnswer] = useState<OptionProps | null>(null);
+
+  const onQuestionAnswerSelected = useCallback(
+    (item: OptionProps) => {
+      setAnswer(item);
     },
-    [op]
+    [answer]
   );
 
+  console.log(answer)
+
   return (
-    <OptionWrapper onClick={() => selectedOption(item.id)}>
+    <OptionWrapper onClick={() => onQuestionAnswerSelected(item)}>
       <Text
         fontSize={"sm"}
         fontType="header"
@@ -162,7 +176,7 @@ const Option = React.memo(({ item }: { item: OptionProps }) => {
         textAlign="center"
         className="option-text"
       >
-        {item.name}
+        {item?.name}
       </Text>
     </OptionWrapper>
   );
