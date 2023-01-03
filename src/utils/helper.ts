@@ -5,10 +5,10 @@ export const keyExists = (array: { [key: string]: any }[], key: string): boolean
 }
 
 export const concatenate = (array: { [key: string]: any | string }[]): string => {
-    return array.reduce((acc, item) => {
+    return array.reduce((acc, item, i) => {
         const key = Object.keys(item)[0];
         const value = item[key];
-        return `${acc}\n${key} *${value}*%0a%0a%0a`;
+        return `${i}. ${acc}\n${key} *${value}*%0a%0a%0a`;
     }, '');
 }
 
