@@ -58,15 +58,4 @@ function Enquiry({}: Props) {
   );
 }
 
-{
-  /* <a target={"_blank"}
-        color="inherit"
-        href={`https://wa.me/+249111228700?text=khg`}
-        >
-        <Text fontSize={"md"} fontType="header" color="#fff">
-            Hire Me
-        </Text>
-        </a> */
-}
-
 export default Enquiry;

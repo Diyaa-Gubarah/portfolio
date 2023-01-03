@@ -79,7 +79,7 @@ const ProjectCard: React.FC<Props> = ({ item }) => {
         </Box>
         <Touchable
           onClick={() => {
-            console.log("open Project");
+            // console.log("open Project");
           }}
           className="card-button"
         >

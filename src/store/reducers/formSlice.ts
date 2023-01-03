@@ -46,7 +46,7 @@ export const submitForm = (formData: FormState) => async (dispatch: Dispatch) =>
 
     await postRequest('https://jsonplaceholder.typicode.com/posts', formData)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             // dispatch(actions.setLoading(false));
         })
         .catch((err) => {

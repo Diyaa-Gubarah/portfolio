@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useReducer } from "react";
+import { formReducer, initialFormState } from "./EnquiryFormReducer";
 
 import Box from "../box/Box";
 import List from "../list/List";
@@ -6,13 +7,13 @@ import { OptionProps } from "../../data/questions";
 import { QUESTIONS } from "../../data";
 import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
-import { formReducer } from "./EnguiryFormReducer";
+import { concatenate } from "../../utils/helper";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
 type Props = { close: () => void };
 
-const OptionWrapper = styled(motion.div)<{}>`
+const OptionWrapper = styled(motion.div)<{ selected: boolean }>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -21,10 +22,12 @@ const OptionWrapper = styled(motion.div)<{}>`
   cursor: pointer;
   min-width: max-content;
 
-  background: ${(props) => "#f2f2f2"};
+  background: ${(props) =>
+    props.selected ? "var(--primary-color)" : "#f2f2f2"};
 
   & .option-text {
-    color: ${(props) => "--text-secondary-color"};
+    color: ${(props) =>
+      props.selected ? "var(--background-color)" : "--text-secondary-color"};
   }
 `;
 
@@ -59,20 +62,35 @@ const REnquiryForm = styled(Box)`
 `;
 
 function EnquiryForm({ close }: Props) {
-  const [{ summary }, dispatch] = React.useReducer(formReducer, {
-    summary: [],
-  });
+  const [{ summary, message }, dispatch] = useReducer(
+    formReducer,
+    initialFormState
+  );
+  const handleAddQuestion = useCallback(
+    (question: OptionProps) => {
+      dispatch({
+        type: "ADD_QUESTION",
+        payload: question,
+      });
+    },
+    [dispatch]
+  );
+
+  const handleSendMessage = useCallback(() => {
+    // here is code
+    close();
+  }, [summary]);
 
   return (
     <REnquiryForm
       direction="column"
-      gap="2em"
+      gap="3em"
       backgroundColor="#fff"
       rounded="0.5em"
       padding="2em"
       height="80%"
     >
-      <Box direction="column" width="100%" gap="1em">
+      <Box direction="column" width="100%" gap="0.5em">
         <Text
           fontSize={"lg"}
           fontType="header"
@@ -96,23 +114,23 @@ function EnquiryForm({ close }: Props) {
 
       {React.Children.toArray(
         QUESTIONS.map((item) => (
-          <Box
-            direction="column"
-            gap="0.75em"
-            width="100%"
-            align="center"
-            onClick={() => dispatch({ type: "ADD_QUESTION", payload: item })}
-          >
+          <Box direction="column" gap="1em" width="100%" align="center">
             <Text
-              fontSize={"sm"}
+              fontSize={"md"}
               fontType="header"
               color="var(--background-color)"
               fontWeight="bold"
+              textAlign="center"
             >
-              {item.question}
+              {`${item.id}. ${item.question}`}
             </Text>
             <Box width="100%" justify="center">
-              <List Item={Option} data={item.options} gap="0.5em" />
+              <List
+                Item={Option}
+                data={item.options}
+                gap="0.5em"
+                onClick={handleAddQuestion}
+              />
             </Box>
           </Box>
         ))
@@ -125,18 +143,37 @@ function EnquiryForm({ close }: Props) {
       >
         <Touchable
           rounded="0.25em"
-          onClick={() => {}}
-          backgroundColor="var(--primary-color)"
+          onClick={handleSendMessage}
+          backgroundColor={
+            message ? "var(--primary-color)" : "var(--text-primary-color)"
+          }
           className="form-btn"
         >
-          <Text
-            fontSize={"sm"}
-            fontType="header"
-            color="var(--text-primary-color)"
-            fontWeight="bold"
-          >
-            Send
-          </Text>
+          {message ? (
+            <a
+              target={"_blank"}
+              color="inherit"
+              href={`https://wa.me/+249111228700?text=${message}`}
+            >
+              <Text
+                fontSize={"sm"}
+                fontType="header"
+                color="var(--text-primary-color)"
+                fontWeight="bold"
+              >
+                Send
+              </Text>
+            </a>
+          ) : (
+            <Text
+              fontSize={"sm"}
+              fontType="header"
+              color="var(--text-secondary-color)"
+              fontWeight="bold"
+            >
+              Answer Questions
+            </Text>
+          )}
         </Touchable>
         <Touchable rounded="0.25em" onClick={close} className="form-btn">
           <Text
@@ -153,22 +190,21 @@ function EnquiryForm({ close }: Props) {
   );
 }
 
-export default EnquiryForm;
+export default React.memo(EnquiryForm);
 
-const Option = React.memo(({ item }: { item: OptionProps }) => {
-  const [answer, setAnswer] = useState<OptionProps | null>(null);
-
-  const onQuestionAnswerSelected = useCallback(
-    (item: OptionProps) => {
-      setAnswer(item);
-    },
-    [answer]
-  );
-
-  console.log(answer)
+const Option = ({
+  item,
+  onClick,
+}: {
+  item: OptionProps;
+  onClick: (arg: any) => void;
+}) => {
+  const getSelectedOption = useCallback((item: OptionProps) => {
+    onClick(item);
+  }, []);
 
   return (
-    <OptionWrapper onClick={() => onQuestionAnswerSelected(item)}>
+    <OptionWrapper onClick={() => getSelectedOption(item)} selected={false}>
       <Text
         fontSize={"sm"}
         fontType="header"
@@ -180,4 +216,4 @@ const Option = React.memo(({ item }: { item: OptionProps }) => {
       </Text>
     </OptionWrapper>
   );
-});
+};

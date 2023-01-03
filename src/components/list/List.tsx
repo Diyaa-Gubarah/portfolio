@@ -7,17 +7,16 @@ interface ListProps<T, P> {
   Item?: React.ComponentType<P>;
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
   gap?: string;
+  onClick?: (item: T) => void;
 }
 
 const ListWrapper = styled.div<ListProps<any, any>>`
   display: flex;
   align-items: center;
-
   flex-direction: ${(props) => props.direction};
   gap: ${(props) => props.gap};
-
   overflow-x: scroll;
-  scroll-snap-align: start; // add !important flag
+  scroll-snap-align: start;
   scroll-snap-type: x mandatory;
   /* hide scrollbar */
   ::-webkit-scrollbar {
@@ -29,12 +28,26 @@ const ListWrapper = styled.div<ListProps<any, any>>`
   width: auto;
 `;
 
-const List: React.FC<ListProps<any, any>> = ({ data, Item, ...props }) => {
+const List: React.FC<ListProps<any, any>> = ({
+  data,
+  Item,
+  onClick = undefined,
+  ...props
+}) => {
   return (
     <ListWrapper {...props}>
-      {data?.map((item) => Item && <Item key={item.id} item={item} />)}
+      {data?.map(
+        (item) =>
+          Item && (
+            <Item
+              key={item.id}
+              item={item}
+              onClick={() => onClick && onClick(item)}
+            />
+          )
+      )}
     </ListWrapper>
   );
 };
 
-export default List;
+export default React.memo(List);
