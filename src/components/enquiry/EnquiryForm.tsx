@@ -1,4 +1,6 @@
-import React, { useCallback, useReducer } from "react";
+import EnquiryFormContext, { EnquiryContext } from "./EnquiryFormContext";
+import React, { useCallback, useReducer, useState } from "react";
+import { concatenate, keyExists } from "../../utils/helper";
 import { formReducer, initialFormState } from "./EnquiryFormReducer";
 
 import Box from "../box/Box";
@@ -7,7 +9,6 @@ import { OptionProps } from "../../data/questions";
 import { QUESTIONS } from "../../data";
 import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
-import { concatenate } from "../../utils/helper";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -26,6 +27,7 @@ const OptionWrapper = styled(motion.div)<{ selected: boolean }>`
     props.selected ? "var(--primary-color)" : "#f2f2f2"};
 
   & .option-text {
+    font-weight: ${(props) => props.selected && "600"};
     color: ${(props) =>
       props.selected ? "var(--background-color)" : "--text-secondary-color"};
   }
@@ -125,12 +127,14 @@ function EnquiryForm({ close }: Props) {
               {`${item.id}. ${item.question}`}
             </Text>
             <Box width="100%" justify="center">
-              <List
-                Item={Option}
-                data={item.options}
-                gap="0.5em"
-                onClick={handleAddQuestion}
-              />
+              <EnquiryFormContext value={summary}>
+                <List
+                  Item={Option}
+                  data={item.options}
+                  gap="0.5em"
+                  onClick={handleAddQuestion}
+                />
+              </EnquiryFormContext>
             </Box>
           </Box>
         ))
@@ -199,12 +203,21 @@ const Option = ({
   item: OptionProps;
   onClick: (arg: any) => void;
 }) => {
-  const getSelectedOption = useCallback((item: OptionProps) => {
-    onClick(item);
-  }, []);
+  const summary = React.useContext(EnquiryContext);
+  const selected = React.useMemo(
+    () => keyExists(summary, item.name),
+    [item.name, summary.length]
+  );
+
+  const getSelectedOption = useCallback(
+    (item: OptionProps) => {
+      onClick(item);
+    },
+    [summary]
+  );
 
   return (
-    <OptionWrapper onClick={() => getSelectedOption(item)} selected={false}>
+    <OptionWrapper onClick={() => getSelectedOption(item)} selected={selected}>
       <Text
         fontSize={"sm"}
         fontType="header"

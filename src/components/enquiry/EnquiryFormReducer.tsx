@@ -1,5 +1,4 @@
-import { OptionProps, Question } from "../../data/questions";
-
+import { OptionProps } from "../../data/questions";
 import { concatenate } from "../../utils/helper";
 
 type ACTION = { type: "ADD_QUESTION"; payload: OptionProps };
@@ -20,17 +19,29 @@ export const formReducer = (
 ): STATE => {
   switch (action.type) {
     case "ADD_QUESTION":
-      const ifExist = state.summary.find(
-        (ques) => ques[action.payload.question]
+      const key = action.payload.question;
+      const value = action.payload.name;
+      const ifQuestionExist = state.summary.find((ques) => {
+        return ques[key];
+      });
+
+      const ifAnswerExist = ifQuestionExist?.[key] === value;
+
+      console.log(
+        `ifQuestionExist :${ifQuestionExist !== undefined}`,
+        `ifAnswerExist :${ifAnswerExist}`
       );
-      const modified = ifExist
-        ? state.summary.filter((ques) => !ques[action.payload.question])
+
+      const modified = ifQuestionExist
+        ? state.summary.filter((ques) => !ques[key])
         : [
             ...state.summary.concat({
-              [action.payload.question]: action.payload.name,
+              [key]: value,
             }),
           ];
       const msg = concatenate(modified);
+
+      // console.log(JSON.stringify(modified));
       return {
         ...state,
         summary: [...modified],

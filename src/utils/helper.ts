@@ -1,7 +1,7 @@
 export const keyExists = (array: { [key: string]: any }[], key: string): boolean => {
 
 
-    return array.some(item => Object.keys(item)[0] === key);
+    return array.some(item => Object.values(item)[0] === key);
 }
 
 export const concatenate = (array: { [key: string]: any | string }[]): string => {
