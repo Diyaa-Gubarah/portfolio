@@ -13,10 +13,21 @@ const AnimatedCard = styled(Box)`
 
   @media screen and (max-width: 380px) {
     min-width: 100%;
+
+    & .skills-container {
+      gap: 0.35em;
+    }
+    & .project-title {
+      font-size: 1.1rem;
+    }
+
+    & .project-skills {
+      font-size: 0.6rem;
+    }
   }
 
   & .card-button {
-    padding: 0.15em;
+    padding: 0.1em;
     align-items: center;
     justify-content: center;
     display: none;
@@ -43,7 +54,7 @@ const AnimatedCard = styled(Box)`
     }
     .card-button {
       transition: 1s;
-      display: inline-flex;
+      display: flex;
     }
   }
 `;
@@ -59,35 +70,37 @@ const ProjectCard: React.FC<Props> = ({ item, onClick }) => {
       padding="1em"
       flex={1}
     >
-      <Box align="center" justify="space-between">
-        <Box flex={1} direction="column">
+      <Box flex={1} direction="column">
+        <Box align="flex-start" justify="space-between" gap="0.5em">
           <Text
             fontSize="lg"
             color="var(--text-primary-color)"
             fontType="header"
             fontWeight="bold"
+            className="project-title"
           >
             {item.title}
           </Text>
-
-          <Box gap="0.5em">
-            {React.Children.toArray(
-              item.fields.map((hash) => (
-                <Text
-                  fontSize="sm"
-                  color="var(--text-secondary-color)"
-                  fontType="header"
-                  fontWeight="bold"
-                >
-                  {hash}
-                </Text>
-              ))
-            )}
-          </Box>
+          <Touchable onClick={onClick} className="card-button">
+            <Icon name="show" size="1.24em" color="var(--background)" />
+          </Touchable>
         </Box>
-        <Touchable onClick={onClick} className="card-button">
-          <Icon name="show" size="1.24em" color="var(--background)" />
-        </Touchable>
+
+        <Box gap="0.5em" className="skills-container">
+          {React.Children.toArray(
+            item.fields.map((hash) => (
+              <Text
+                fontSize="sm"
+                color="var(--text-secondary-color)"
+                fontType="header"
+                fontWeight="bold"
+                className="project-skills"
+              >
+                {hash}
+              </Text>
+            ))
+          )}
+        </Box>
       </Box>
       <Image
         className="project-image"
