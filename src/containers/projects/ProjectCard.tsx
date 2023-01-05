@@ -47,9 +47,9 @@ const AnimatedCard = styled(Box)`
   }
 `;
 
-type Props = { item: unknown };
+type Props = { item: unknown; onClick: () => void };
 
-const ProjectCard: React.FC<Props> = ({ item }) => {
+const ProjectCard: React.FC<Props> = ({ item, onClick }) => {
   return (
     <AnimatedCard
       direction="column"
@@ -77,12 +77,7 @@ const ProjectCard: React.FC<Props> = ({ item }) => {
             Mobile App & Backend
           </Text>
         </Box>
-        <Touchable
-          onClick={() => {
-            // console.log("open Project");
-          }}
-          className="card-button"
-        >
+        <Touchable onClick={onClick} className="card-button">
           <Icon name="show" size="1.24em" color="var(--background)" />
         </Touchable>
       </Box>
@@ -94,7 +89,6 @@ const ProjectCard: React.FC<Props> = ({ item }) => {
         height="70%"
         objectFit="cover"
         borderRadius="0.5em 0"
-        blind="lighten"
       />
     </AnimatedCard>
   );

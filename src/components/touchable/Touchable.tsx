@@ -15,10 +15,6 @@ interface TouchableProps {
   backgroundColor?: string;
   color?: string;
   className?: string;
-  hoverStyle?:
-    | string
-    | (string | number | false | (() => string | number | false))[];
-  //     hoverStyle={`transform: scale(2); box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)`}
 }
 
 const StyledTouchable = styled.div<TouchableProps>`
@@ -32,8 +28,10 @@ const StyledTouchable = styled.div<TouchableProps>`
   cursor: pointer;
   transition: transform 0.2s;
 
+  cursor: pointer;
+
   &:hover {
-    ${(props) => props.hoverStyle || "transform: scale(1)"}
+    scale: 0.95;
   }
 `;
 

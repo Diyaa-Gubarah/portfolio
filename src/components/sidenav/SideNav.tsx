@@ -101,7 +101,6 @@ const SideNav: React.ForwardRefRenderFunction<unknown, SidenavProps> = (
         <Box position={{ position: "absolute" }}>
           <Touchable
             className="menu"
-            hoverStyle={`transform: scale(1.2); `}
             onClick={toggleSidenav}
           >
             <Icon name="close" color="var(--primary-color)" size="1.2em" />

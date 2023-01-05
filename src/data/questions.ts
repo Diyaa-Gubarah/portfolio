@@ -6,6 +6,7 @@ const QuestionData = [
     'Do you have a domain and hosting set up, or will that be something I need to assist with?',
     'Do you have any content (text, images,design etc.) already prepared for the project, or will that be something I need to assist with?',
     'Do you have a project manager or point of contact who will be responsible for providing direction and feedback during the project?',
+    'Will there be any changes or updates to the project scope after the initial agreement has been made?',
     'Are you open to suggestions or new ideas for the project?',
 ];
 
@@ -74,14 +75,23 @@ const AssetsOption: OptionProps[] = [
 
 
 const YesNowOption1: OptionProps[] = [
-    { id: "1", question: QuestionData[6], name: 'Yes', value: "yes" },
-    { id: "2", question: QuestionData[6], name: 'No', value: "no" },
+    { id: "1", question: QuestionData[6], name: `Yes, I have`, value: "yes" },
+    { id: "2", question: QuestionData[6], name: `No, I don't have`, value: "no" },
 ];
 
+
 const YesNowOption2: OptionProps[] = [
-    { id: "1", question: QuestionData[7], name: 'Yes', value: "yes" },
-    { id: "2", question: QuestionData[7], name: 'No', value: "no" },
+    { id: "1", question: QuestionData[7], name: 'Yes, and I will consider any additional fees.', value: "yes" },
+    { id: "2", question: QuestionData[7], name: 'No, just the initial agreement.', value: "no" },
 ];
+
+
+
+const YesNowOption3: OptionProps[] = [
+    { id: "1", question: QuestionData[8], name: 'Yes, I will be happy', value: "yes" },
+    { id: "2", question: QuestionData[8], name: 'No, thanks', value: "no" },
+];
+
 
 
 
@@ -101,6 +111,7 @@ export default [
     { id: "4", question: 'What is the budget for the project?', options: BudgetOption },
     { id: "5", question: 'Do you have a domain and hosting set up, or will that be something I need to assist with?', options: HostOption },
     { id: "6", question: 'Do you have any content (text, images,design etc.) already prepared for the project, or will that be something I need to assist with?', options: AssetsOption },
-    { id: "7", question: 'Do you have a project manager or point of contact who will be responsible for providing direction and feedback during the project?', options: YesNowOption1 },
-    { id: "8", question: 'Are you open to suggestions or new ideas for the project?', options: YesNowOption2 },
+    { id: "7", question: 'Do you have a project manager or someone who will be responsible for providing direction and feedback during the project?', options: YesNowOption1 },
+    { id: "8", question: 'Will there be any changes or updates to the project scope after the initial agreement has been made?', options: YesNowOption2 },
+    { id: "9", question: 'Are you open to suggestions or new ideas for the project?', options: YesNowOption3 },
 ]

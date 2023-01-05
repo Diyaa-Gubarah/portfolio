@@ -116,11 +116,7 @@ const Navigation = () => {
           </CustomLink>
         </Box>
         {show ? (
-          <Touchable
-            className="menu"
-            hoverStyle={`transform: scale(1.2); `}
-            onClick={openSideNav}
-          >
+          <Touchable className="menu" onClick={openSideNav}>
             <Icon name="menu" size="1.2em" color="var(--primary-color)" />
           </Touchable>
         ) : null}
