@@ -33,6 +33,8 @@ const AnimatedCard = styled(Box)`
     display: none;
     border-radius: 0.25em;
     background: var(--text-primary-color);
+    position: absolute;
+    right: 0;
   }
 
   & .project-image {
@@ -70,8 +72,8 @@ const ProjectCard: React.FC<Props> = ({ item, onClick }) => {
       padding="1em"
       flex={1}
     >
-      <Box flex={1} direction="column">
-        <Box align="flex-start" justify="space-between" gap="0.5em">
+      <Box flex={1} direction="column" position={{ position: "relative" }}>
+        <Box>
           <Text
             fontSize="lg"
             color="var(--text-primary-color)"
