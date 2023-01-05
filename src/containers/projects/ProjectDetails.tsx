@@ -34,8 +34,8 @@ function ProjectDetails({ close, item }: Props) {
       height="80%"
       textAlign="center"
     >
-      <Box width="100%" align="flex-start" gap="0.25em" direction="column">
-        <Box gap="1em" justify="space-between" align="center" width="100%">
+      <Box width="100%" align="flex-start" gap="0.5em" direction="column">
+        <Box gap="1.5em" justify="space-between" align="center" width="100%">
           <Text
             fontSize="lg"
             color="var(--text-primary-color)"
@@ -49,17 +49,17 @@ function ProjectDetails({ close, item }: Props) {
             <Icon name="close" size="1.24em" color="#fff" />
           </Touchable>
         </Box>
-        <Box gap="0.5em" wrap="wrap" align="center" >
+        <Box gap="0.25em" wrap="wrap" align="center">
           {React.Children.toArray(
             Array.from("jhgjkjh kjh").map(() => (
               <Box>
                 <Text
                   fontSize="sm"
-                  color="var(--text-primary-color)"
+                  color="var(--text-secondary-color)"
                   fontType="header"
                   fontWeight="bold"
                 >
-                  #reacts
+                  #styled-components
                 </Text>
               </Box>
             ))
@@ -91,6 +91,40 @@ function ProjectDetails({ close, item }: Props) {
         laudantium dignissimos porro nobis earum, quaerat, totam ducimus a.
         Molestiae consectetur ab dolorem!
       </Text>
+      <Box justify="space-around">
+        <Touchable onClick={close}>
+          <a
+            target={"_blank"}
+            color="inherit"
+            href={`https://wa.me/+249111228700?text=${"kjhk"}`}
+          >
+            <Text
+              fontSize="md"
+              color="var(--primary-color)"
+              fontType="header"
+              fontWeight="bold"
+            >
+              Go Live
+            </Text>
+          </a>
+        </Touchable>
+        <Touchable onClick={close}>
+          <a
+            target={"_blank"}
+            color="inherit"
+            // href={`https://wa.me/+249111228700?text=${message}`}
+          >
+            <Text
+              fontSize="md"
+              color="var(--text-secondary-color)"
+              fontType="header"
+              fontWeight="bold"
+            >
+              Source
+            </Text>
+          </a>
+        </Touchable>
+      </Box>
     </ResponsiveProjectDetails>
   );
 }
