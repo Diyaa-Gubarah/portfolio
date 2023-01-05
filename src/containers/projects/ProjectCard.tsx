@@ -1,5 +1,6 @@
 import { Box, Icon, Image, Text, Touchable } from "../../components";
 
+import { IProject } from "../../data/projects";
 import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
@@ -47,14 +48,14 @@ const AnimatedCard = styled(Box)`
   }
 `;
 
-type Props = { item: unknown; onClick: () => void };
+type Props = { item: IProject; onClick: () => void };
 
 const ProjectCard: React.FC<Props> = ({ item, onClick }) => {
   return (
     <AnimatedCard
       direction="column"
       rounded="1em"
-      backgroundColor="#0003"
+      backgroundColor="var(--card-background)"
       padding="1em"
       flex={1}
     >
@@ -66,16 +67,23 @@ const ProjectCard: React.FC<Props> = ({ item, onClick }) => {
             fontType="header"
             fontWeight="bold"
           >
-            HOMELLA
+            {item.title}
           </Text>
-          <Text
-            fontSize="sm"
-            color="var(--text-secondary-color)"
-            fontType="header"
-            fontWeight="bold"
-          >
-            Mobile App & Backend
-          </Text>
+
+          <Box gap="0.5em">
+            {React.Children.toArray(
+              item.fields.map((hash) => (
+                <Text
+                  fontSize="sm"
+                  color="var(--text-secondary-color)"
+                  fontType="header"
+                  fontWeight="bold"
+                >
+                  {hash}
+                </Text>
+              ))
+            )}
+          </Box>
         </Box>
         <Touchable onClick={onClick} className="card-button">
           <Icon name="show" size="1.24em" color="var(--background)" />
@@ -83,7 +91,7 @@ const ProjectCard: React.FC<Props> = ({ item, onClick }) => {
       </Box>
       <Image
         className="project-image"
-        src={images.personal}
+        src={item.image}
         alt="project image showcase"
         width="90%"
         height="70%"

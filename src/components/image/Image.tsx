@@ -26,7 +26,7 @@ type MixBlendMode =
   | "luminosity";
 
 interface ImageProps {
-  src: string;
+  src: string | undefined;
   alt: string;
   width?: string;
   height?: string;

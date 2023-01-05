@@ -1,5 +1,6 @@
 import { Box, Icon, Image, Text, Touchable } from "../../components";
 
+import { IProject } from "../../data/projects";
 import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
@@ -21,7 +22,7 @@ const ResponsiveProjectDetails = styled(Box)`
   }
 `;
 
-type Props = { item: unknown; close: () => void };
+type Props = { item: IProject | null; close: () => void };
 
 function ProjectDetails({ close, item }: Props) {
   return (
@@ -43,7 +44,7 @@ function ProjectDetails({ close, item }: Props) {
             fontWeight="bold"
             textAlign="left"
           >
-            Homella Application
+            {item?.title}
           </Text>
           <Touchable onClick={close}>
             <Icon name="close" size="1.24em" color="#fff" />
@@ -51,7 +52,7 @@ function ProjectDetails({ close, item }: Props) {
         </Box>
         <Box gap="0.25em" wrap="wrap" align="center">
           {React.Children.toArray(
-            Array.from("jhgjkjh kjh").map(() => (
+            item?.skills.map((hash) => (
               <Box>
                 <Text
                   fontSize="sm"
@@ -59,7 +60,7 @@ function ProjectDetails({ close, item }: Props) {
                   fontType="header"
                   fontWeight="bold"
                 >
-                  #styled-components
+                  {`#${hash}`}
                 </Text>
               </Box>
             ))
@@ -68,7 +69,7 @@ function ProjectDetails({ close, item }: Props) {
       </Box>
       <Image
         alt="project image"
-        src={images.personal}
+        src={item?.image}
         height="60%"
         width="100%"
         objectFit="cover"
@@ -76,28 +77,11 @@ function ProjectDetails({ close, item }: Props) {
         blind="lighten"
       />
       <Text fontSize="sm" color="var(--text-primary-color)" fontType="header">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore facilis
-        laboriosam vitae adipisci rem reprehenderit eveniet omnis laudantium
-        dignissimos porro nobis earum, quaerat, totam ducimus a. Molestiae
-        consectetur ab dolorem. Lorem ipsum dolor sit, amet consectetur
-        adipisicing elit. Labore facilis laboriosam vitae adipisci rem
-        reprehenderit eveniet omnis laudantium dignissimos porro nobis earum,
-        quaerat, totam ducimus a. Molestiae consectetur ab dolorem! Lorem ipsum
-        dolor sit, amet consectetur adipisicing elit. Labore facilis laboriosam
-        vitae adipisci rem reprehenderit eveniet omnis laudantium dignissimos
-        porro nobis earum, quaerat, totam ducimus a. Molestiae consectetur ab
-        dolorem! Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Labore facilis laboriosam vitae adipisci rem reprehenderit eveniet omnis
-        laudantium dignissimos porro nobis earum, quaerat, totam ducimus a.
-        Molestiae consectetur ab dolorem!
+        {item?.description}
       </Text>
       <Box justify="space-around">
         <Touchable onClick={close}>
-          <a
-            target={"_blank"}
-            color="inherit"
-            href={`https://wa.me/+249111228700?text=${"kjhk"}`}
-          >
+          <a target={"_blank"} color="inherit" href={`${item?.projectLink}`}>
             <Text
               fontSize="md"
               color="var(--primary-color)"
@@ -109,11 +93,7 @@ function ProjectDetails({ close, item }: Props) {
           </a>
         </Touchable>
         <Touchable onClick={close}>
-          <a
-            target={"_blank"}
-            color="inherit"
-            // href={`https://wa.me/+249111228700?text=${message}`}
-          >
+          <a target={"_blank"} color="inherit" href={`${item?.githubLink}`}>
             <Text
               fontSize="md"
               color="var(--text-secondary-color)"

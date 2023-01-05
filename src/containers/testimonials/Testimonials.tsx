@@ -1,6 +1,6 @@
 import { Box, List, Text } from "../../components";
+import { OFFERS, TESTIMONIALS } from "../../data";
 
-import { OFFERS } from "../../data";
 import React from "react";
 import TestimonialsCard from "./TestimonialsCard";
 
@@ -43,7 +43,7 @@ const Testimonials = (props: Props) => {
 
       <List
         renderItem={(item) => <TestimonialsCard item={item} />}
-        data={OFFERS}
+        data={TESTIMONIALS}
         gap="1.5em"
       />
     </Box>

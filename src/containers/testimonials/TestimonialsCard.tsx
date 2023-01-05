@@ -1,7 +1,7 @@
 import { Box, Image, Text } from "../../components";
 
+import { ITestimonial } from "../../data/testimonials";
 import React from "react";
-import images from "../../constants/images";
 import styled from "styled-components";
 
 const AnimatedCard = styled(Box)`
@@ -18,14 +18,14 @@ const AnimatedCard = styled(Box)`
   }
 `;
 
-type Props = { item: unknown };
+type Props = { item: ITestimonial };
 
 const TestimonialsCard: React.FC<Props> = ({ item }) => {
   return (
     <AnimatedCard
       direction="column"
       rounded="1em"
-      backgroundColor="#0003"
+      backgroundColor="var(--card-background)"
       padding="1em"
       flex={1}
       align="center"
@@ -39,11 +39,14 @@ const TestimonialsCard: React.FC<Props> = ({ item }) => {
         textAlign="center"
         className="test-quote"
       >
-        " waladi diyaa ma'f zaio salat alnabi alio, heares nehal kman
-        insha'allah w yakhlevo sepyan w/ banat. "
+        {`"${
+          item.feedback.length > 150
+            ? `${item.feedback.slice(0, 150)}...`
+            : item.feedback
+        }"`}
       </Text>
       <Image
-        src={images.personal}
+        src={item.image}
         alt="project image showcase"
         width="35%"
         height="35%"
@@ -58,10 +61,10 @@ const TestimonialsCard: React.FC<Props> = ({ item }) => {
           fontType="header"
           fontWeight="bold"
         >
-          Nadia Khalil
+          {item.name}
         </Text>
         <Text fontSize="sm" color="var(--text-primary-color)" fontType="header">
-          FED, at Homella
+          {item.occupation}
         </Text>
       </Box>
     </AnimatedCard>

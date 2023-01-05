@@ -33,7 +33,7 @@ const OverLay = ({ count, description, header }: ServiceCardProps) => {
       flex={1}
       direction="column"
       gap="1em"
-      backgroundColor="#0004"
+      backgroundColor="var(--card-background)"
       rounded="1em"
       padding="1em"
       justify="space-between"

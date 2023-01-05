@@ -29,10 +29,16 @@ const Static = styled(Box)`
 const Statistics = (props: Props) => {
   return (
     <Static justify="space-between" gap="2em">
-      <Box direction="column" flex={1} gap="1.5em" className="static-card" justify="flex-end">
+      <Box
+        direction="column"
+        flex={1}
+        gap="1.5em"
+        className="static-card"
+        justify="flex-end"
+      >
         <Box gap="2em" justify="space-between">
-          <StaticCard number={20} suffix="YEARS" />
-          <StaticCard number={40} suffix="PROJECTS" />
+          <StaticCard number={2} suffix="YEARS" />
+          <StaticCard number={3} suffix="PROJECTS" />
           <StaticCard number={20} suffix="CLIENTS" />
         </Box>
         <Text fontSize={"lg"} fontType="header" color="#fff">
@@ -54,7 +60,7 @@ const Statistics = (props: Props) => {
         gap="0.75em"
         className="static-text"
         flex={1}
-        backgroundColor={"#0004"}
+        backgroundColor="var(--card-background)"
         rounded="0.5em"
         padding="1em"
       >

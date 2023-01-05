@@ -28,7 +28,7 @@ const Contacts = (props: Props) => {
       direction="column"
     >
       <Box
-        backgroundColor={"#0004"}
+        backgroundColor="var(--card-background)"
         rounded="1em"
         direction="column"
         gap="1em"
