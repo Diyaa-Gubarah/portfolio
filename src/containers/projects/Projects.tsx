@@ -34,7 +34,11 @@ const Projects = (props: Props) => {
 
       {/* Project Card */}
 
-      <List Item={ProjectCard} data={OFFERS} gap="1.5em" />
+      <List
+        renderItem={(item) => <ProjectCard item={item} />}
+        data={OFFERS}
+        gap="1.5em"
+      />
     </Box>
   );
 };

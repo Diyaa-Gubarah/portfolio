@@ -1,6 +1,4 @@
-import EnquiryFormContext, { EnquiryContext } from "./EnquiryFormContext";
-import React, { useCallback, useReducer, useState } from "react";
-import { concatenate, keyExists } from "../../utils/helper";
+import React, { useCallback, useReducer } from "react";
 import { formReducer, initialFormState } from "./EnquiryFormReducer";
 
 import Box from "../box/Box";
@@ -9,6 +7,7 @@ import { OptionProps } from "../../data/questions";
 import { QUESTIONS } from "../../data";
 import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
+import { keyExists } from "../../utils/helper";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -68,6 +67,7 @@ function EnquiryForm({ close }: Props) {
     formReducer,
     initialFormState
   );
+
   const handleAddQuestion = useCallback(
     (question: OptionProps) => {
       dispatch({
@@ -79,7 +79,6 @@ function EnquiryForm({ close }: Props) {
   );
 
   const handleSendMessage = useCallback(() => {
-    // here is code
     close();
   }, [summary]);
 
@@ -127,14 +126,19 @@ function EnquiryForm({ close }: Props) {
               {`${item.id}. ${item.question}`}
             </Text>
             <Box width="100%" justify="center">
-              <EnquiryFormContext value={summary}>
-                <List
-                  Item={Option}
-                  data={item.options}
-                  gap="0.5em"
-                  onClick={handleAddQuestion}
-                />
-              </EnquiryFormContext>
+              <List
+                renderItem={(item) => (
+                  <Option
+                    data={summary}
+                    item={item}
+                    onClick={() => {
+                      handleAddQuestion(item);
+                    }}
+                  />
+                )}
+                data={item.options}
+                gap="0.5em"
+              />
             </Box>
           </Box>
         ))
@@ -199,25 +203,19 @@ export default React.memo(EnquiryForm);
 const Option = ({
   item,
   onClick,
+  data,
 }: {
   item: OptionProps;
   onClick: (arg: any) => void;
+  data: Record<string, string>[];
 }) => {
-  const summary = React.useContext(EnquiryContext);
   const selected = React.useMemo(
-    () => keyExists(summary, item.name),
-    [item.name, summary.length]
-  );
-
-  const getSelectedOption = useCallback(
-    (item: OptionProps) => {
-      onClick(item);
-    },
-    [summary]
+    () => keyExists(data, item.name),
+    [item.name, data.length]
   );
 
   return (
-    <OptionWrapper onClick={() => getSelectedOption(item)} selected={selected}>
+    <OptionWrapper selected={selected} onClick={onClick}>
       <Text
         fontSize={"sm"}
         fontType="header"

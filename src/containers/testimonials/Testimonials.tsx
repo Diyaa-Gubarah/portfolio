@@ -41,7 +41,11 @@ const Testimonials = (props: Props) => {
 
       {/* Project Card */}
 
-      <List Item={TestimonialsCard} data={OFFERS} gap="1.5em" />
+      <List
+        renderItem={(item) => <TestimonialsCard item={item} />}
+        data={OFFERS}
+        gap="1.5em"
+      />
     </Box>
   );
 };
