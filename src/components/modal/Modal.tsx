@@ -22,8 +22,17 @@ const ModalWrapper = styled(motion.div)`
   align-items: center;
   /* From https://css.glass */
   background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
+
+  /* Fallback for browsers that don't support backdrop-filter */
   -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+
+  /* Fix for Safari */
+  @supports not (-webkit-backdrop-filter: none) {
+    background: none;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
 `;
 
 const Modal: React.ForwardRefRenderFunction<unknown, ModalProps> = (
