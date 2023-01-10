@@ -1,19 +1,18 @@
 import React, { useCallback, useReducer } from "react";
 import { formReducer, initialFormState } from "./EnquiryFormReducer";
 
+import styled from "styled-components";
+import { QUESTIONS } from "../../data";
+import { OptionProps } from "../../data/questions";
+import { keyExists } from "../../utils/helper";
 import Box from "../box/Box";
 import List from "../list/List";
-import { OptionProps } from "../../data/questions";
-import { QUESTIONS } from "../../data";
 import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
-import { keyExists } from "../../utils/helper";
-import { motion } from "framer-motion";
-import styled from "styled-components";
 
 type Props = { close: () => void };
 
-const OptionWrapper = styled(motion.div)<{ selected: boolean }>`
+const OptionWrapper = styled.div<{ selected: boolean }>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
