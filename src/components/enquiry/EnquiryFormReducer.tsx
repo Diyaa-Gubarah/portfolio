@@ -25,13 +25,6 @@ export const formReducer = (
         return ques[key];
       });
 
-      const ifAnswerExist = ifQuestionExist?.[key] === value;
-
-      console.log(
-        `ifQuestionExist :${ifQuestionExist !== undefined}`,
-        `ifAnswerExist :${ifAnswerExist}`
-      );
-
       const modified = ifQuestionExist
         ? state.summary.filter((ques) => !ques[key])
         : [
@@ -41,7 +34,6 @@ export const formReducer = (
           ];
       const msg = concatenate(modified);
 
-      // console.log(JSON.stringify(modified));
       return {
         ...state,
         summary: [...modified],

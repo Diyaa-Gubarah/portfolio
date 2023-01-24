@@ -1,14 +1,14 @@
 import React, { useCallback, useReducer } from "react";
 import { formReducer, initialFormState } from "./EnquiryFormReducer";
 
-import styled from "styled-components";
-import { QUESTIONS } from "../../data";
-import { OptionProps } from "../../data/questions";
-import { keyExists } from "../../utils/helper";
 import Box from "../box/Box";
 import List from "../list/List";
+import { OptionProps } from "../../data/questions";
+import { QUESTIONS } from "../../data";
 import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
+import { keyExists } from "../../utils/helper";
+import styled from "styled-components";
 
 type Props = { close: () => void };
 
@@ -145,22 +145,23 @@ function EnquiryForm({ close }: Props) {
       <Box
         gap="1em"
         align="center"
-        justify="space-between"
+        justify="space-around"
         className="form-btn-container"
       >
-        <Touchable
-          rounded="0.25em"
-          onClick={handleSendMessage}
-          backgroundColor={
-            message ? "var(--primary-color)" : "var(--text-primary-color)"
-          }
-          className="form-btn"
-        >
-          {message ? (
-            <a
-              target={"_blank"}
-              color="inherit"
-              href={`https://wa.me/+249111228700?text=${message}`}
+        {message ? (
+          <a
+            target={"_blank"}
+            color="inherit"
+            href={`https://wa.me/+249111228700?text=${message}`}
+            className="form-btn"
+          >
+            <Touchable
+              rounded="0.25em"
+              onClick={handleSendMessage}
+              backgroundColor={
+                message ? "var(--primary-color)" : "var(--text-primary-color)"
+              }
+              className="form-btn"
             >
               <Text
                 fontSize={"sm"}
@@ -170,8 +171,10 @@ function EnquiryForm({ close }: Props) {
               >
                 Send
               </Text>
-            </a>
-          ) : (
+            </Touchable>
+          </a>
+        ) : (
+          <Box align="center" justify="center" className="form-btn">
             <Text
               fontSize={"sm"}
               fontType="header"
@@ -180,8 +183,8 @@ function EnquiryForm({ close }: Props) {
             >
               Answer Questions
             </Text>
-          )}
-        </Touchable>
+          </Box>
+        )}
         <Touchable rounded="0.25em" onClick={close} className="form-btn">
           <Text
             fontSize={"sm"}

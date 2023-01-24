@@ -4,7 +4,6 @@ import Box from "../box/Box";
 import EnquiryForm from "./EnquiryForm";
 import React from "react";
 import Text from "../text/Text";
-import Touchable from "../touchable/Touchable";
 import styled from "styled-components";
 
 const message = `I really _like_ your portfolio and think you'd be a great fit for a project I'm working on. Your experience as a *JavaScript Developer* is especially impressive.
