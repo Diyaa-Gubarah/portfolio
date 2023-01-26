@@ -3,6 +3,7 @@ import { Box, Image, Text } from "../../components";
 import { ITestimonial } from "../../data/testimonials";
 import React from "react";
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 const AnimatedCard = styled(Box)`
   overflow: hidden;
@@ -21,6 +22,7 @@ const AnimatedCard = styled(Box)`
 type Props = { item: ITestimonial };
 
 const TestimonialsCard: React.FC<Props> = ({ item }) => {
+  const t = useTranslate()
   return (
     <AnimatedCard
       direction="column"
@@ -41,8 +43,8 @@ const TestimonialsCard: React.FC<Props> = ({ item }) => {
       >
         {`"${
           item.feedback.length > 150
-            ? `${item.feedback.slice(0, 150)}...`
-            : item.feedback
+            ? `${t(item.feedback).slice(0, 150)}...`
+            : t(item.feedback)
         }"`}
       </Text>
       <Image
@@ -61,7 +63,7 @@ const TestimonialsCard: React.FC<Props> = ({ item }) => {
           fontType="header"
           fontWeight="bold"
         >
-          {item.name}
+          {t(item.name)}
         </Text>
         <Text fontSize="sm" color="var(--text-primary-color)" fontType="header">
           {item.occupation}

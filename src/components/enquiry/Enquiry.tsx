@@ -5,6 +5,8 @@ import EnquiryForm from "./EnquiryForm";
 import React from "react";
 import Text from "../text/Text";
 import styled from "styled-components";
+import { t } from "i18next";
+import { useTranslate } from "../../hooks";
 
 const message = `I really _like_ your portfolio and think you'd be a great fit for a project I'm working on. Your experience as a *JavaScript Developer* is especially impressive.
 Could you let me know your availability and rates for this project?
@@ -29,6 +31,7 @@ const Responsive = styled(Box)`
 type Props = {};
 
 function Enquiry({}: Props) {
+  const t = useTranslate();
   const modalRef = React.useRef<ModalHandle>(null);
 
   const openModal = React.useCallback(() => {
@@ -50,7 +53,7 @@ function Enquiry({}: Props) {
         onClick={openModal}
       >
         <Text fontSize={"md"} fontType="header" color="#fff">
-          Hire Me
+          {t("HOME_HIRE")}
         </Text>
       </Responsive>
     </>

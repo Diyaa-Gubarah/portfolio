@@ -4,6 +4,7 @@ import { IProject } from "../../data/projects";
 import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 const ResponsiveProjectDetails = styled(Box)`
   max-width: 700px;
@@ -25,6 +26,7 @@ const ResponsiveProjectDetails = styled(Box)`
 type Props = { item: IProject | null; close: () => void };
 
 function ProjectDetails({ close, item }: Props) {
+  const t = useTranslate();
   return (
     <ResponsiveProjectDetails
       backgroundColor="var(--background-color)"
@@ -44,7 +46,7 @@ function ProjectDetails({ close, item }: Props) {
             fontWeight="bold"
             textAlign="left"
           >
-            {item?.title}
+            {item ? t(item.title) : ""}
           </Text>
           <Touchable onClick={close}>
             <Icon name="close" size="1.24em" color="#fff" />
@@ -77,7 +79,7 @@ function ProjectDetails({ close, item }: Props) {
         blind="lighten"
       />
       <Text fontSize="sm" color="var(--text-primary-color)" fontType="header">
-        {item?.description}
+        {item ? t(item.description) : ""}
       </Text>
       <Box justify="space-around">
         <Touchable onClick={close}>
@@ -88,7 +90,7 @@ function ProjectDetails({ close, item }: Props) {
               fontType="header"
               fontWeight="bold"
             >
-              Go Live
+              {t("PROJECT_BTN_1")}
             </Text>
           </a>
         </Touchable>
@@ -100,7 +102,7 @@ function ProjectDetails({ close, item }: Props) {
               fontType="header"
               fontWeight="bold"
             >
-              Source
+              {t("PROJECT_BTN_2")}
             </Text>
           </a>
         </Touchable>

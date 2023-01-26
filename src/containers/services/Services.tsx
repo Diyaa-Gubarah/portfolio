@@ -4,10 +4,13 @@ import { OFFERS } from "../../data";
 import OverLay from "./OverLay";
 import React from "react";
 import Statistics from "./Statistics";
+import { t } from "i18next";
+import { useTranslate } from "../../hooks";
 
 type Props = {};
 
 const Services = (props: Props) => {
+  const t = useTranslate();
   return (
     <Box direction="column">
       <Statistics />
@@ -20,7 +23,7 @@ const Services = (props: Props) => {
             color="var(--text-primary-color)"
             textAlign="center"
           >
-            How I Can Help You?
+            {t("SERVICES_HEADER")}
           </Text>
           <Text
             fontSize={"md"}
@@ -28,8 +31,7 @@ const Services = (props: Props) => {
             color="var(--text-primary-color)"
             textAlign="center"
           >
-            As a JavaScript developer, I can provide a wide range of services to
-            you.
+            {t("SERVICES_DES")}
           </Text>
         </Box>
 
@@ -46,8 +48,8 @@ const Services = (props: Props) => {
               <OverLay
                 id={item.id}
                 count={item.count}
-                header={item.header}
-                description={item.description}
+                header={t(item.header)}
+                description={t(item.description)}
               />
             ))
           )}

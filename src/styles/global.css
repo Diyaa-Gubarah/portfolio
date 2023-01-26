@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?&family=Poppins&family=Roboto&display=swap');
 
 
+/* @font-face {
+    font-family: 'DubaiReg';
+    src: local('DubaiReg'), url(../assets/fonts/Dubai-Regular.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: 'DubaiBold';
+    src: local('DubaiBold'), url(../assets/fonts/Dubai-Bold.ttf) format('opentype');
+} */
 
 :root {
     --primary-color: #f2bb05;
@@ -13,8 +22,9 @@
 
 
 
+
 html {
-    font-family: 'Roboto', 'Poppins'sans-serif;
+    font-family: 'Roboto', 'Poppins', sans-serif;
     scroll-behavior: smooth;
     background: var(--background-color);
     font-size: 16px;

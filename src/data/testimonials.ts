@@ -10,21 +10,21 @@ export interface ITestimonial {
 
 const testimonials: ITestimonial[] = [
     {
-        name: 'John Doe',
+        name: 'TESTIMONIALS_NAME_1',
         occupation: 'Software Engineer',
-        feedback: 'I hired this freelancer to build a web application for my company and was extremely satisfied with the result. They were able to deliver the project on time and exceeded my expectations. I highly recommend their services.',
+        feedback: 'TESTIMONIALS_DESCRIPTION_1',
         image: images.avatar_1
     },
     {
-        name: 'Jane Smith',
+        name: 'TESTIMONIALS_NAME_2',
         occupation: 'Product Manager',
-        feedback: `I was very impressed with this freelancer's attention to detail and ability to understand my vision for the project.They were a pleasure to work with and I would definitely hire them again.`,
+        feedback: 'TESTIMONIALS_DESCRIPTION_2',
         image: images.avatar_3
     },
     {
-        name: 'Bob Williams',
+        name: 'TESTIMONIALS_NAME_3',
         occupation: 'Entrepreneur',
-        feedback: 'I had a great experience working with this freelancer. They were able to take my idea and turn it into a fully functional product. I highly recommend them for any project.',
+        feedback: 'TESTIMONIALS_DESCRIPTION_3',
         image: images.avatar_2
     }
 ];

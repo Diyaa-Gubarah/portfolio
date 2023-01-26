@@ -6,10 +6,12 @@ import { ModalHandle } from "../../components/modal/Modal";
 import ProjectCard from "./ProjectCard";
 import ProjectDetails from "./ProjectDetails";
 import React from "react";
+import { useTranslate } from "../../hooks";
 
 type Props = {};
 
 const Projects = (props: Props) => {
+  const t = useTranslate();
   const [project, setProject] = React.useState<IProject | null>(null);
   const modalRef = React.useRef<ModalHandle>(null);
 
@@ -41,7 +43,7 @@ const Projects = (props: Props) => {
             color="var(--text-primary-color)"
             textAlign="center"
           >
-            Projects
+            {t("PROJECTS")}
           </Text>
           <Text
             fontWeight="bold"
@@ -50,9 +52,7 @@ const Projects = (props: Props) => {
             color="var(--text-secondary-color)"
             textAlign="center"
           >
-            I have worked with a range of clients, from small startups to large
-            corporations, and I can't wait to put your project on my list of
-            successes.
+            {t("PROJECT_DESCRIPTION")}
           </Text>
         </Box>
 

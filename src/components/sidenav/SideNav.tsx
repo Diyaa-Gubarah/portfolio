@@ -4,9 +4,11 @@ import Box from "../box/Box";
 import CustomLink from "../custom-link/CustomLink";
 import Icon from "../icon/Icon";
 import Text from "../text/Text";
+import ToggleButton from "../toggle-btn/ToggleButton";
 import Touchable from "../touchable/Touchable";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 interface SidenavProps {
   ref: Ref<SidenavHandle>;
@@ -79,6 +81,7 @@ const SideNav: React.ForwardRefRenderFunction<unknown, SidenavProps> = (
   { toggleMenu },
   ref
 ): JSX.Element | null => {
+  const t = useTranslate();
   const [show, setShow] = useState(false);
 
   const toggleSidenav = useCallback(() => {
@@ -99,39 +102,37 @@ const SideNav: React.ForwardRefRenderFunction<unknown, SidenavProps> = (
       <SidenavWrapper onClick={toggleSidenav} />
       <SidenavContainer backgroundColor="#0009" padding="1em 0.75em">
         <Box position={{ position: "absolute" }}>
-          <Touchable
-            className="menu"
-            onClick={toggleSidenav}
-          >
+          <Touchable className="menu" onClick={toggleSidenav}>
             <Icon name="close" color="var(--primary-color)" size="1.2em" />
           </Touchable>
         </Box>
         <Box gap="0.75em" direction="column" width="80%" margin="auto auto">
           <CustomLink href="#home" id="home">
             <Text fontSize="md" fontType="header">
-              Me.
+              {t("NAVIGATION_LINK_1")}.
             </Text>
           </CustomLink>
           <CustomLink href="#services" id="services">
             <Text fontSize="md" fontType="header">
-              Services.
+              {t("NAVIGATION_LINK_2")}.
             </Text>
           </CustomLink>
           <CustomLink href="#projects" id="projects">
             <Text fontSize="md" fontType="header">
-              Projects.
+              {t("NAVIGATION_LINK_3")}.
             </Text>
           </CustomLink>
           <CustomLink href="#testimonial" id="testimonial">
             <Text fontSize="md" fontType="header">
-              Testimonial.
+              {t("NAVIGATION_LINK_4")}.
             </Text>
           </CustomLink>
           <CustomLink href="#contact" id="contact">
             <Text fontSize="md" fontType="header">
-              Contact.
+              {t("NAVIGATION_LINK_5")}.
             </Text>
           </CustomLink>
+          <ToggleButton />
         </Box>
       </SidenavContainer>
     </SidenavMotion>

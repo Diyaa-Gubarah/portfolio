@@ -2,6 +2,7 @@ import { Box, Text } from "../../components";
 import React, { useEffect, useMemo, useState } from "react";
 
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 type Props = {};
 
@@ -9,10 +10,6 @@ const Static = styled(Box)`
   @media screen and (max-width: 960px) {
     flex-direction: column;
     text-align: center;
-
-    & .static-text {
-      /* display: none; */
-    }
 
     & .static-card {
       @media screen and (max-width: 450px) {
@@ -27,6 +24,7 @@ const Static = styled(Box)`
 `;
 
 const Statistics = (props: Props) => {
+  const t = useTranslate();
   return (
     <Static justify="space-between" gap="2em">
       <Box
@@ -37,20 +35,19 @@ const Statistics = (props: Props) => {
         justify="flex-end"
       >
         <Box gap="2em" justify="space-between">
-          <StaticCard number={2} suffix="YEARS" />
-          <StaticCard number={3} suffix="PROJECTS" />
-          <StaticCard number={20} suffix="CLIENTS" />
+          <StaticCard number={2} suffix={t("STATIC_ONE")} />
+          <StaticCard number={3} suffix={t("STATIC_TOW")} />
+          <StaticCard number={20} suffix={t("STATIC_THREE")} />
         </Box>
         <Text fontSize={"lg"} fontType="header" color="#fff">
-          I will bring passion, knowledge, and expertise to every project,you
-          can trust that I will go above and beyond to{" "}
+          {t("STATIC_CTA_TEXT")}{" "}
           <Text
             fontType="header"
             fontSize="none"
             fontWeight="bold"
             gradient="var(--primary-gradient)"
           >
-            ENSURE YOUR SUCCESS.
+            {t("STATIC_CTA_TEXT_COLOR")}
           </Text>
         </Text>
       </Box>
@@ -58,14 +55,13 @@ const Statistics = (props: Props) => {
       <Box
         direction="column"
         gap="0.75em"
-        className="static-text"
         flex={1}
         backgroundColor="var(--card-background)"
         rounded="0.5em"
         padding="1em"
       >
         <Text fontWeight="bold" fontSize={"xlg"} fontType="header" color="#fff">
-          Who's DIYAA?
+          {t("STATIC_NAME")}
         </Text>
         <Text
           color="var(--text-secondary-color)"
@@ -73,12 +69,7 @@ const Statistics = (props: Props) => {
           fontType="header"
           lineHeight="1.5em"
         >
-          {`I graduated as a Surveying Engineer then turned Fullstack
-          Freelancer, I have a diverse range of skills and experiences that make
-          me a valuable asset to you, my background in surveying gives me a strong foundation in analysis and management, and my self-taught
-          software development skills show my determination and dedication to
-          learning new things, shifting careers is never easy, but I've worked
-          hard and persevered to build a successful career as a freelancer.`}
+          {t("STATIC_DESCRIPTION")}
         </Text>
       </Box>
     </Static>

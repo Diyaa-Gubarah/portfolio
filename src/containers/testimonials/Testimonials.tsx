@@ -3,10 +3,12 @@ import { OFFERS, TESTIMONIALS } from "../../data";
 
 import React from "react";
 import TestimonialsCard from "./TestimonialsCard";
+import { useTranslate } from "../../hooks";
 
 type Props = {};
 
 const Testimonials = (props: Props) => {
+  const t = useTranslate();
   return (
     <Box direction="column" padding="3em 0" gap="3em" flex={1}>
       <Box direction="column" align="center" gap="0.75em">
@@ -17,7 +19,7 @@ const Testimonials = (props: Props) => {
           color="var(--text-primary-color)"
           textAlign="center"
         >
-          What Client Says{" "}
+          {t("TESTIMONIALS_TEXT")}{" "}
           <Text
             fontWeight="bold"
             fontSize={"xlg"}
@@ -25,7 +27,7 @@ const Testimonials = (props: Props) => {
             gradient="var(--primary-gradient)"
             textAlign="center"
           >
-            ABOUT ME?
+            {t("TESTIMONIALS_TEXT_COLOR")}
           </Text>
         </Text>
         <Text
@@ -35,7 +37,7 @@ const Testimonials = (props: Props) => {
           color="var(--text-secondary-color)"
           textAlign="center"
         >
-          Here's are some client feedback that work with me.
+          {t("TESTIMONIALS_TEXT_DESCRIPTION")}
         </Text>
       </Box>
 

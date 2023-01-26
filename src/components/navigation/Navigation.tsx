@@ -7,8 +7,10 @@ import Icon from "../icon/Icon";
 import Image from "../image/Image";
 import React from "react";
 import Text from "../text/Text";
+import ToggleButton from "../toggle-btn/ToggleButton";
 import Touchable from "../touchable/Touchable";
 import images from "../../constants/images";
+import { useTranslate } from "../../hooks";
 
 const ResponsiveNavigation = styled(Box)`
   position: fixed;
@@ -46,6 +48,7 @@ const ResponsiveNavigation = styled(Box)`
 `;
 
 const Navigation = () => {
+  const t = useTranslate();
   const [show, setShow] = React.useState(true);
   const sideRef = React.useRef<SidenavHandle>(null);
 
@@ -91,29 +94,30 @@ const Navigation = () => {
         <Box gap="1em" className="navigation">
           <CustomLink href="#home" id="home">
             <Text fontSize="md" fontType="header">
-              Me.
+              {t("NAVIGATION_LINK_1")}.
             </Text>
           </CustomLink>
           <CustomLink href="#services" id="services">
             <Text fontSize="md" fontType="header">
-              Services.
+              {t("NAVIGATION_LINK_2")}.
             </Text>
           </CustomLink>
           <CustomLink href="#projects" id="projects">
             <Text fontSize="md" fontType="header">
-              Projects.
+              {t("NAVIGATION_LINK_3")}.
             </Text>
           </CustomLink>
           <CustomLink href="#testimonial" id="testimonial">
             <Text fontSize="md" fontType="header">
-              Testimonial.
+              {t("NAVIGATION_LINK_4")}.
             </Text>
           </CustomLink>
           <CustomLink href="#contact" id="contact">
             <Text fontSize="md" fontType="header">
-              Contact.
+              {t("NAVIGATION_LINK_5")}.
             </Text>
           </CustomLink>
+          <ToggleButton />
         </Box>
         {show ? (
           <Touchable className="menu" onClick={openSideNav}>

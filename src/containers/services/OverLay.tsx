@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 
 import images from "../../constants/images";
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 const AnimatedBorder = styled(Box)`
   overflow: hidden;
@@ -28,6 +29,7 @@ type ServiceCardProps = {
 };
 
 const OverLay = ({ count, description, header }: ServiceCardProps) => {
+  const t = useTranslate();
   return (
     <AnimatedBorder
       flex={1}
@@ -43,7 +45,7 @@ const OverLay = ({ count, description, header }: ServiceCardProps) => {
         fontType="header"
         color="var(--text-secondary-color)"
       >
-        {`${count} project${count > 1 ? "s" : ""}`}
+        {`${count} ${count > 1 ? t("PROJECTS") : t("PROJECT")}`}
       </Text>
       <Text fontSize={"md"} fontType="header" color="var(--text-primary-color)">
         {description}

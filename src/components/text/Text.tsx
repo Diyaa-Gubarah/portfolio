@@ -37,6 +37,7 @@ const StyledText = styled.span<TextProps>`
   font-size: ${(props) => FONT_SIZE[props.fontSize]};
   line-height: ${(props) => props.lineHeight};
   font-weight: ${(props) => props.fontWeight};
+  /* font-family: ${(props) => (props.fontType === "body" ? "DubaiReg" : "DubaiBold")}; */
   font-family: ${(props) => (props.fontType === "body" ? "Roboto" : "Poppins")};
   ${(props) => props.gradient && gradientStyles}
 `;

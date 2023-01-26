@@ -4,6 +4,7 @@ import { IProject } from "../../data/projects";
 import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 const AnimatedCard = styled(Box)`
   overflow: hidden;
@@ -64,6 +65,7 @@ const AnimatedCard = styled(Box)`
 type Props = { item: IProject; onClick: () => void };
 
 const ProjectCard: React.FC<Props> = ({ item, onClick }) => {
+  const t = useTranslate()
   return (
     <AnimatedCard
       direction="column"
@@ -81,7 +83,7 @@ const ProjectCard: React.FC<Props> = ({ item, onClick }) => {
             fontWeight="bold"
             className="project-title"
           >
-            {item.title}
+            {t(item.title)}
           </Text>
           <Touchable onClick={onClick} className="card-button">
             <Icon name="show" size="1.24em" color="var(--background)" />

@@ -1,8 +1,10 @@
 import { Box, Enquiry, Image, Text } from "../../components";
 
 import React from "react";
+import i18n from "../../i18n/i18n";
 import images from "../../constants/images";
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 type Props = {};
 
@@ -20,6 +22,8 @@ const Responsive = styled(Box)`
 `;
 
 const Home = (props: Props) => {
+  const t = useTranslate();
+
   return (
     <Responsive justify="space-between" gap="2em" padding="3em 0">
       <Box
@@ -36,15 +40,16 @@ const Home = (props: Props) => {
             color="#fff"
             fontWeight="bold"
           >
-            ME.
+            {t("NAVIGATION_LINK_1")}.
           </Text>
+
           <Text
             fontWeight="bold"
             fontSize={"xlg"}
             fontType="header"
             gradient="var(--primary-gradient)"
           >
-            DIYAA GUBARAH
+            {t("HOME_NAME")}
           </Text>
           <Text
             fontSize={"md"}
@@ -52,18 +57,18 @@ const Home = (props: Props) => {
             fontType="body"
             gradient="var(--primary-gradient)"
           >
-            JavaScript Developer w/ TypeScript.
+            {t('HOME_OCCUPATION')}
           </Text>
         </Box>
         <Text fontSize={"xlg"} fontType="header" color="#fff">
-          Don't let your ideas remain just that. Let's work together to{" "}
+          {t("HOME_CTA_TEXT")}{" "}
           <Text
             fontType="header"
             fontSize="none"
             fontWeight="bold"
             gradient="var(--primary-gradient)"
           >
-            BRING YOUR NEXT PROJECT TO LIFE!
+            {t("HOME_CTA_TEXT_COLOR")}
           </Text>
         </Text>
 
@@ -79,7 +84,7 @@ const Home = (props: Props) => {
                 href="https://download1979.mediafire.com/butxpfp9cpig/9bjglmocxdqwbka/Diyaa-Gubarah.CV.pdf"
                 download
               >
-                Download CV
+                {t("HOME_CV")}
               </a>
             </Text>
           </Box>
