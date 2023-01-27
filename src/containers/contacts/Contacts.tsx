@@ -3,6 +3,7 @@ import { Box, Enquiry, Icon, Text, Touchable } from "../../components";
 import React from "react";
 import images from "../../constants/images";
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 const subject = "Project Inquiry";
 const body = `Hi Diyaa,\t
@@ -20,6 +21,7 @@ const ResponsiveFooter = styled(Box)`
 type Props = {};
 
 const Contacts = (props: Props) => {
+  const t = useTranslate();
   return (
     <ResponsiveFooter
       flex={1}
@@ -46,9 +48,7 @@ const Contacts = (props: Props) => {
           fontWeight="bold"
           lineHeight="1.5em"
         >
-          Don't hesitate to contact me to discuss your project in more detail. I
-          look forward to the opportunity to work with you and help bring your
-          vision to life.
+          {t("CONTACT_ENQUIRY")}
         </Text>
         <Enquiry />
       </Box>

@@ -21,6 +21,8 @@ export const formReducer = (
     case "ADD_QUESTION":
       const key = action.payload.question;
       const value = action.payload.name;
+
+      
       const ifQuestionExist = state.summary.find((ques) => {
         return ques[key];
       });

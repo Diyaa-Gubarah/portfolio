@@ -9,6 +9,7 @@ import Text from "../text/Text";
 import Touchable from "../touchable/Touchable";
 import { keyExists } from "../../utils/helper";
 import styled from "styled-components";
+import { useTranslate } from "../../hooks";
 
 type Props = { close: () => void };
 
@@ -62,16 +63,21 @@ const REnquiryForm = styled(Box)`
 `;
 
 function EnquiryForm({ close }: Props) {
+  const t = useTranslate();
   const [{ summary, message }, dispatch] = useReducer(
     formReducer,
     initialFormState
   );
 
   const handleAddQuestion = useCallback(
-    (question: OptionProps) => {
+    (item: OptionProps) => {
       dispatch({
         type: "ADD_QUESTION",
-        payload: question,
+        payload: {
+          ...item,
+          name: t(item.name),
+          question: t(item.question),
+        },
       });
     },
     [dispatch]
@@ -98,7 +104,7 @@ function EnquiryForm({ close }: Props) {
           fontWeight="bold"
           textAlign="center"
         >
-          Let's Get Started
+          {t("FORM_HEADER")}
         </Text>
         <Text
           fontSize={"sm"}
@@ -107,8 +113,7 @@ function EnquiryForm({ close }: Props) {
           fontWeight="bold"
           textAlign="center"
         >
-          Time is important, help me understand your idea by answer this simple
-          questions.
+          {t("FORM_DESCRIPTION")}
         </Text>
       </Box>
 
@@ -122,7 +127,7 @@ function EnquiryForm({ close }: Props) {
               fontWeight="bold"
               textAlign="center"
             >
-              {`${item.id}. ${item.question}`}
+              {`${item.id}. ${t(item.question)}`}
             </Text>
             <Box width="100%" justify="center">
               <List
@@ -169,7 +174,7 @@ function EnquiryForm({ close }: Props) {
                 color="var(--text-primary-color)"
                 fontWeight="bold"
               >
-                Send
+                {t("FORM_SEND")}
               </Text>
             </Touchable>
           </a>
@@ -181,7 +186,7 @@ function EnquiryForm({ close }: Props) {
               color="var(--text-secondary-color)"
               fontWeight="bold"
             >
-              Answer Questions
+              {t("FORM_ANSWER")}
             </Text>
           </Box>
         )}
@@ -192,7 +197,7 @@ function EnquiryForm({ close }: Props) {
             color="var(--primary-color)"
             fontWeight="bold"
           >
-            Cancel
+            {t("FORM_CANCEL")}
           </Text>
         </Touchable>
       </Box>
@@ -211,8 +216,10 @@ const Option = ({
   onClick: (arg: any) => void;
   data: Record<string, string>[];
 }) => {
+  const t = useTranslate();
+
   const selected = React.useMemo(
-    () => keyExists(data, item.name),
+    () => keyExists(data, t(item.name)),
     [item.name, data.length]
   );
 
@@ -225,7 +232,7 @@ const Option = ({
         textAlign="center"
         className="option-text"
       >
-        {item?.name}
+        {item.name ? t(item.name) : ""}
       </Text>
     </OptionWrapper>
   );
