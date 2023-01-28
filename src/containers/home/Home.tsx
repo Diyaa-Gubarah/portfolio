@@ -57,7 +57,7 @@ const Home = (props: Props) => {
             fontType="body"
             gradient="var(--primary-gradient)"
           >
-            {t('HOME_OCCUPATION')}
+            {t("HOME_OCCUPATION")}
           </Text>
         </Box>
         <Text fontSize={"xlg"} fontType="header" color="#fff">
@@ -81,6 +81,7 @@ const Home = (props: Props) => {
               gradient="var(--primary-gradient)"
             >
               <a
+                target={"_blank"}
                 href="https://download1979.mediafire.com/butxpfp9cpig/9bjglmocxdqwbka/Diyaa-Gubarah.CV.pdf"
                 download
               >
