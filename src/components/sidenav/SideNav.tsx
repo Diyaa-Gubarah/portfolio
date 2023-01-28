@@ -99,43 +99,42 @@ const SideNav: React.ForwardRefRenderFunction<unknown, SidenavProps> = (
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75 }}
     >
-      <SidenavWrapper onClick={toggleSidenav}>
-        <SidenavContainer backgroundColor="#0009" padding="1em 0.75em">
-          <Box position={{ position: "absolute" }}>
-            <Touchable className="menu" onClick={toggleSidenav}>
-              <Icon name="close" color="var(--primary-color)" size="1.2em" />
-            </Touchable>
-          </Box>
-          <Box gap="0.75em" direction="column" width="80%" margin="auto auto">
-            <CustomLink href="#home" id="home">
-              <Text fontSize="md" fontType="header">
-                {t("NAVIGATION_LINK_1")}.
-              </Text>
-            </CustomLink>
-            <CustomLink href="#services" id="services">
-              <Text fontSize="md" fontType="header">
-                {t("NAVIGATION_LINK_2")}.
-              </Text>
-            </CustomLink>
-            <CustomLink href="#projects" id="projects">
-              <Text fontSize="md" fontType="header">
-                {t("NAVIGATION_LINK_3")}.
-              </Text>
-            </CustomLink>
-            <CustomLink href="#testimonial" id="testimonial">
-              <Text fontSize="md" fontType="header">
-                {t("NAVIGATION_LINK_4")}.
-              </Text>
-            </CustomLink>
-            <CustomLink href="#contact" id="contact">
-              <Text fontSize="md" fontType="header">
-                {t("NAVIGATION_LINK_5")}.
-              </Text>
-            </CustomLink>
-            <ToggleButton />
-          </Box>
-        </SidenavContainer>
-      </SidenavWrapper>
+      <SidenavWrapper onClick={toggleSidenav} />
+      <SidenavContainer backgroundColor="#0009" padding="1em 0.75em">
+        <Box position={{ position: "absolute" }}>
+          <Touchable className="menu" onClick={toggleSidenav}>
+            <Icon name="close" color="var(--primary-color)" size="1.2em" />
+          </Touchable>
+        </Box>
+        <Box gap="0.75em" direction="column" width="80%" margin="auto auto">
+          <CustomLink href="#home" id="home">
+            <Text fontSize="md" fontType="header">
+              {t("NAVIGATION_LINK_1")}.
+            </Text>
+          </CustomLink>
+          <CustomLink href="#services" id="services">
+            <Text fontSize="md" fontType="header">
+              {t("NAVIGATION_LINK_2")}.
+            </Text>
+          </CustomLink>
+          <CustomLink href="#projects" id="projects">
+            <Text fontSize="md" fontType="header">
+              {t("NAVIGATION_LINK_3")}.
+            </Text>
+          </CustomLink>
+          <CustomLink href="#testimonial" id="testimonial">
+            <Text fontSize="md" fontType="header">
+              {t("NAVIGATION_LINK_4")}.
+            </Text>
+          </CustomLink>
+          <CustomLink href="#contact" id="contact">
+            <Text fontSize="md" fontType="header">
+              {t("NAVIGATION_LINK_5")}.
+            </Text>
+          </CustomLink>
+          <ToggleButton />
+        </Box>
+      </SidenavContainer>
     </SidenavMotion>
   ) : null;
 };
