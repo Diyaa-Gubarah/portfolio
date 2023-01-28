@@ -22,7 +22,7 @@ const AnimatedCard = styled(Box)`
 type Props = { item: ITestimonial };
 
 const TestimonialsCard: React.FC<Props> = ({ item }) => {
-  const t = useTranslate()
+  const t = useTranslate();
   return (
     <AnimatedCard
       direction="column"
@@ -42,7 +42,7 @@ const TestimonialsCard: React.FC<Props> = ({ item }) => {
         className="test-quote"
       >
         {`"${
-          item.feedback.length > 150
+          t(item.feedback).length > 150
             ? `${t(item.feedback).slice(0, 150)}...`
             : t(item.feedback)
         }"`}
