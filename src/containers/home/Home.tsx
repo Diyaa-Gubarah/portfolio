@@ -82,7 +82,7 @@ const Home = (props: Props) => {
             >
               <a
                 target={"_blank"}
-                href="https://download1979.mediafire.com/butxpfp9cpig/9bjglmocxdqwbka/Diyaa-Gubarah.CV.pdf"
+                href="https://drive.google.com/file/d/1A0DrZLzMkGffbcW7Q8J2TTmTeXBlT-y6/view?usp=drive_link"
                 download
               >
                 {t("HOME_CV")}
