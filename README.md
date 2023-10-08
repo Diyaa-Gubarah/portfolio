@@ -34,9 +34,3 @@ My portfolio website is built using modern web technologies and frameworks:
 ## Live Demo
 
 Explore my portfolio live by visiting [My Portfolio Website](https://dyfg.netlify.app/).
-
-## Screenshots
-
-![Portfolio Screenshots](https://i.imgur.com/aBcDeFg.png)
-
-Feel free to contact me if you have any questions or opportunities for collaboration.
