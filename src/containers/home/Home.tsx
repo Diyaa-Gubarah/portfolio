@@ -82,7 +82,7 @@ const Home = (props: Props) => {
             >
               <a
                 target={"_blank"}
-                href="https://drive.google.com/file/d/1A0DrZLzMkGffbcW7Q8J2TTmTeXBlT-y6/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1ZdzZ1ftS5WqJiZrneZ47OjDi6e0lAeRl/view?usp=drive_link"
                 download
               >
                 {t("HOME_CV")}
