@@ -11,24 +11,23 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+
+    - name: Use Node.js 20
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run build
-      env:
-        CI: true
+        node-version: '20'
+    - name: Install dependencies 
+      run: npm install  
+   
+    - name: Build project
+      run: npm run build
+
     - name: Deploy to Netlify
       run: |
         npm install -g netlify-cli
-        netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$YOUR_SITE_ID
+        netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        YOUR_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
